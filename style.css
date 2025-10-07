@@ -172,12 +172,12 @@ nav a {
 .gutter-banner {
   position: absolute;
   bottom: 25px;
-  right: 25px;
+  right: 25px; /* locked to right */
   display: flex;
   align-items: center;
   gap: 12px;
   background: #ffffff;
-  border: 4px solid transparent;
+  border: 4px solid #004d00;
   border-radius: 12px;
   padding: 14px 20px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.35);
@@ -185,36 +185,16 @@ nav a {
   max-width: 300px;
   z-index: 30;
   overflow: hidden;
-  background-clip: padding-box;
   position: relative;
+  animation: bannerPress 1.5s infinite;
+  transform-origin: bottom right;
 }
 
-/* Metallic Green Border Shimmer */
-.gutter-banner::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-  padding: 4px;
-  background: linear-gradient(
-    120deg,
-    #004d00,
-    #006400,
-    rgba(192,192,192,0.7),
-    #004d00
-  );
-  background-size: 300% 300%;
-  animation: borderSnake 6s linear infinite;
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-}
-
-@keyframes borderSnake {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+@keyframes bannerPress {
+  0%   { transform: scale(1); box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
+  20%  { transform: scale(0.98); box-shadow: 0 3px 8px rgba(0,0,0,0.3); background-color: #fff8e1; }
+  40%  { transform: scale(1); box-shadow: 0 6px 18px rgba(0,0,0,0.35); background-color: #ffffff; }
+  100% { transform: scale(1); }
 }
 
 /* Price Box */
@@ -257,33 +237,34 @@ nav a {
 .leaves span {
   position: absolute;
   top: -10%;
-  font-size: 1.2rem;
-  opacity: 0.4;
+  font-size: 1.3rem;
+  opacity: 0.6;
   animation: fall linear infinite;
 }
 @keyframes fall {
-  0% { transform: translateY(-10%) rotate(0deg); }
-  100% { transform: translateY(110%) rotate(360deg); }
+  0%   { transform: translateY(-10%) translateX(0) rotate(0deg); }
+  100% { transform: translateY(220%) translateX(20px) rotate(360deg); }
 }
-/* slower, consistent speeds */
-.leaves span:nth-child(1) { left: 10%; animation-duration: 10s; }
-.leaves span:nth-child(2) { left: 30%; animation-duration: 12s; }
-.leaves span:nth-child(3) { left: 50%; animation-duration: 11s; }
-.leaves span:nth-child(4) { left: 70%; animation-duration: 13s; }
-.leaves span:nth-child(5) { left: 90%; animation-duration: 12s; }
+.leaves span:nth-child(1) { left: 10%; animation-duration: 4s; animation-delay: 0s; }
+.leaves span:nth-child(2) { left: 30%; animation-duration: 6s; animation-delay: 1s; }
+.leaves span:nth-child(3) { left: 50%; animation-duration: 5s; animation-delay: 2s; }
+.leaves span:nth-child(4) { left: 70%; animation-duration: 7s; animation-delay: 1.5s; }
+.leaves span:nth-child(5) { left: 90%; animation-duration: 8s; animation-delay: 0.5s; }
 
-/* Pulsing Cursor */
+/* Pixel Cursor */
 .click-cursor {
   position: absolute;
   bottom: 4px;
   right: 6px;
-  font-size: 1rem;
-  animation: pulseClick 1.2s infinite;
+  width: 28px;
+  height: auto;
+  animation: cursorClick 1.5s infinite;
+  transform-origin: bottom right;
 }
-@keyframes pulseClick {
-  0% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.8; }
+@keyframes cursorClick {
+  0%, 100% { transform: scale(1) translateY(0); opacity: 0.9; }
+  20%      { transform: scale(0.9) translateY(2px); opacity: 1; }
+  40%      { transform: scale(1) translateY(0); opacity: 0.9; }
 }
 
 /* ============================= */
