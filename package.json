@@ -1,0 +1,24 @@
+{
+  "name": "inlikeflynn-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "dev": "vite"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrMarketingMan/Flynn-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/MrMarketingMan/Flynn-website/issues"
+  },
+  "homepage": "https://github.com/MrMarketingMan/Flynn-website#readme",
+  "dependencies": {
+    "vite": "^7.1.9"
+  }
+}
