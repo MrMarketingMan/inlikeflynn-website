@@ -43,11 +43,8 @@
     <!-- Seasonal Gutter Banner -->
     <div
       class="gutter-banner"
-      role="button"
-      tabindex="0"
-      aria-label="View gutter cleaning fall special"
-      onclick="openPopup()"
-      onkeydown="if (event.key === 'Enter' || event.key === ' ') { openPopup(); }"
+      role="presentation"
+      aria-label="Seasonal gutter cleaning special"
     >
       <div class="gutter-price">
         <span class="currency">$</span>99
@@ -57,33 +54,8 @@
         <p class="subtext">Fall Special • Limited Time</p>
       </div>
 
-      <!-- falling leaves -->
-      <div class="leaves" aria-hidden="true">
-        <span>🍂</span>
-        <span>🍁</span>
-        <span>🍃</span>
-        <span>🍂</span>
-        <span>🍁</span>
-      </div>
-
       <!-- pixel cursor -->
       <img src="./src/assets/img/cursor.png" alt="" class="click-cursor" aria-hidden="true">
-    </div>
-
-    <!-- Popup Modal -->
-    <div id="gutter-popup" class="popup-overlay" role="dialog" aria-modal="true" aria-label="Gutter cleaning special details">
-      <div class="popup-content">
-        <span
-          class="close-btn"
-          role="button"
-          tabindex="0"
-          aria-label="Close gutter cleaning offer"
-          onclick="closePopup()"
-          onkeydown="if (event.key === 'Enter' || event.key === ' ') { closePopup(); }"
-        >&times;</span>
-        <h2>Gutter Cleaning Special</h2>
-        <p>This is a placeholder popup. Add more details about your seasonal deal here!</p>
-      </div>
     </div>
   </section>
 

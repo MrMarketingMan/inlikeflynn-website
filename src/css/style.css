@@ -184,7 +184,7 @@ nav a {
   color: #111;
   max-width: 300px;
   z-index: 30;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
   animation: bannerPress 1.5s infinite;
   transform-origin: bottom right;
@@ -222,76 +222,6 @@ nav a {
   margin: 2px 0 0;
   font-size: 0.9rem;
   color: #444;
-}
-
-/* Falling Leaves */
-.leaves {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-}
-.leaves span {
-  --start-offset: 0px;
-  --sway-intro: 0px;
-  --sway-a: 0px;
-  --sway-b: 0px;
-  --sway-c: 0px;
-  --landing-offset: 0px;
-  --landing-rotate: 300deg;
-  --landing-rotate-end: 320deg;
-  --max-opacity: 0.75;
-  position: absolute;
-  top: -60%;
-  left: 0;
-  opacity: 0;
-  font-size: 1rem;
-  animation: fall var(--fall-duration, 7000ms) linear forwards;
-  pointer-events: none;
-  transform: translateX(var(--start-offset));
-  transition: opacity 0.6s ease-out;
-  will-change: transform, opacity;
-}
-.leaves span.landed {
-  animation: none;
-  transform: translateX(var(--landing-offset)) translateY(220%) rotate(var(--landing-rotate));
-  opacity: var(--max-opacity);
-}
-.leaves span.landed.fade-out {
-  opacity: 0;
-}
-@keyframes fall {
-  0% {
-    transform: translateX(var(--start-offset)) translateY(-60%) rotate(0deg);
-    opacity: 0;
-  }
-  12% {
-    transform: translateX(calc(var(--start-offset) + var(--sway-intro))) translateY(-30%) rotate(60deg);
-    opacity: 0;
-  }
-  20% {
-    transform: translateX(calc(var(--start-offset) + var(--sway-a))) translateY(-5%) rotate(120deg);
-    opacity: var(--max-opacity);
-  }
-  50% {
-    transform: translateX(var(--sway-b)) translateY(130%) rotate(230deg);
-    opacity: var(--max-opacity);
-  }
-  70% {
-    transform: translateX(var(--sway-c)) translateY(190%) rotate(280deg);
-    opacity: var(--max-opacity);
-  }
-  85% {
-    transform: translateX(var(--landing-offset)) translateY(220%) rotate(var(--landing-rotate));
-    opacity: var(--max-opacity);
-  }
-  100% {
-    transform: translateX(var(--landing-offset)) translateY(220%) rotate(var(--landing-rotate-end));
-    opacity: var(--max-opacity);
-  }
 }
 
 /* Pixel Cursor */
