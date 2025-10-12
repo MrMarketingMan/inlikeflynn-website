@@ -2,6 +2,7 @@
 /* Fonts & Root Variables */
 /* ============================= */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&family=Great+Vibes&display=swap');
+@import './leaves.css';
 
 :root {
   --charcoal: #2E2E2E;
@@ -178,12 +179,13 @@ nav a {
 
 
 /* ============================= */
-/* Gutter Banner */
+/* Gutter Banner — Final Layering */
 /* ============================= */
+
 .gutter-banner {
-  position: absolute;
+  position: absolute;       /* ✅ stays pinned to hero bottom-right */
   bottom: 40px;
-  right: 30px; /* locked to right */
+  right: 30px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -199,6 +201,41 @@ nav a {
   animation: bannerPress 1.5s infinite;
   transform-origin: bottom right;
 }
+
+/* Layer order inside banner */
+.gutter-price {
+  position: relative;
+  z-index: 20; /* 💰 bottom layer */
+}
+
+.gutter-text {
+  position: relative;
+  z-index: 40; /* 📝 top layer (above leaves) */
+}
+
+.leaf-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 30; /* 🍂 between price (20) and text (40) */
+}
+
+.click-cursor {
+  position: absolute;
+  bottom: 1px;
+  right: 2px;
+  width: 28px;
+  height: auto;
+  animation: cursorClick 1.5s infinite;
+  transform-origin: bottom right;
+  z-index: 50; /* 🖱️ always top */
+}
+
+
 
 @keyframes bannerPress {
   0%   { transform: scale(1); box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
