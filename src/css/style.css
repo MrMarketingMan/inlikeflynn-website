@@ -15,6 +15,7 @@
   --soft-gray: #D0D0D0;
   --deep-gray: #151515;
   --elegant-red: #7B2C2C;
+  --banner-height: 420px;
 }
 
 /* ============================= */
@@ -112,6 +113,7 @@ nav a {
   position: relative;
   border-bottom: 4px solid var(--gold);
   z-index: 1;
+  overflow: hidden;
 }
 
 .hero img.logo-placeholder {
@@ -166,13 +168,22 @@ nav a {
   box-shadow: 0 0 10px var(--silver);
 }
 
+.hero h2,
+.hero p,
+.hero button,
+.hero img.logo-placeholder {
+  position: relative;
+  z-index: 10;
+}
+
+
 /* ============================= */
 /* Gutter Banner */
 /* ============================= */
 .gutter-banner {
   position: absolute;
-  bottom: 25px;
-  right: 25px; /* locked to right */
+  bottom: 40px;
+  right: 30px; /* locked to right */
   display: flex;
   align-items: center;
   gap: 12px;
@@ -185,7 +196,6 @@ nav a {
   max-width: 300px;
   z-index: 30;
   overflow: visible;
-  position: relative;
   animation: bannerPress 1.5s infinite;
   transform-origin: bottom right;
 }
@@ -227,8 +237,8 @@ nav a {
 /* Pixel Cursor */
 .click-cursor {
   position: absolute;
-  bottom: 4px;
-  right: 6px;
+  bottom: 1px;
+  right: 2px;
   width: 28px;
   height: auto;
   animation: cursorClick 1.5s infinite;
