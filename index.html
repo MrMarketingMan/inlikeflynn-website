@@ -61,8 +61,8 @@
   <!-- ============================= -->
   <section class="hero" aria-labelledby="hero-heading">
     <h2 id="hero-heading">
-      Your Trusted Handyman
-      <span>Drywall Specialists &amp; Full-Service Handyman Work</span>
+      In Like Flynn LLC<br />
+      <span>Drywall Specialists &amp; Construction Services</span>
     </h2>
 
     <img
@@ -78,12 +78,14 @@
     </button>
 
     <!-- ============================= -->
-    <!-- Seasonal Gutter Banner -->
+    <!-- Seasonal Gutter Banner (acts as modal trigger) -->
     <!-- ============================= -->
     <div
       class="gutter-banner"
-      role="presentation"
-      aria-label="Seasonal gutter cleaning special"
+      id="openGutterModal"
+      role="button"
+      aria-label="Click to view Fall gutter cleaning special"
+      tabindex="0"
     >
       <div class="gutter-price">
         <span class="currency">$</span>99
@@ -151,8 +153,39 @@
   </footer>
 
   <!-- ============================= -->
+  <!-- GUTTER CLEANING MODAL -->
+  <!-- ============================= -->
+  <div id="modal-root">
+    <div class="modal-overlay" id="gutterModal" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="gutterModalTitle">
+        <button class="modal-close" id="closeModal" aria-label="Close modal">&times;</button>
+        <h2 class="modal-title" id="gutterModalTitle">🍂 Fall Gutter Cleaning Special</h2>
+        <div class="modal-content">
+          <p><strong>$99</strong> – 1 Story</p>
+          <p><strong>$130</strong> – 2 Story</p>
+          <p><strong>$180</strong> – 3 Story</p>
+          <hr />
+          <h3>Bonus: Add Gutter Guard</h3>
+          <ul>
+            <li><strong>Basic Mesh</strong> – $5 per sq. ft.</li>
+            <li><strong>Aluminum Snap-In</strong> – $9 per sq. ft.</li>
+            <li><strong>Stainless-Steel Micro Mesh</strong> – $13 per sq. ft.</li>
+          </ul>
+          <p class="discount"><em>10% off install if cleaning is included.</em></p>
+          <blockquote class="quote">
+            “Protect your gutters for good — with our premium guards, you’ll stay clog-free season after season.”
+          </blockquote>
+          <button class="cta-btn" type="button">Contact Us</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================= -->
   <!-- SCRIPTS -->
   <!-- ============================= -->
   <script type="module" src="/src/js/main.js"></script>
 </body>
 </html>
+  <!-- Gutter Cleaning Modal (HTML partial only; styles & JS added in later steps) -->
+  <!-- Keep this near-raw so we can reuse in multiple pages -->
