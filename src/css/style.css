@@ -24,12 +24,15 @@
 /* ============================= */
 /* Global Styles */
 /* ============================= */
+html,
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Montserrat', sans-serif;
   background-color: var(--cream);
   color: var(--charcoal);
 }
+
 
 /* ============================= */
 /* Header */
@@ -37,7 +40,7 @@ body {
 header {
   background-color: var(--darkgreen);
   color: white;
-  padding: 1rem 2rem;
+  padding: 1rem 2rem 1.5rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -171,36 +174,46 @@ nav a.active {
                0 0 20px rgba(255,255,255,0.3);
 }
 
-
 /* ============================= */
-/* Free Estimate Banner */
+/* Free Estimate Banner (Fixed Position) */
 /* ============================= */
 .free-estimate-banner {
-  background-color: var(--elegant-red);
-  color: white;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.55);
-  display: inline-block;
-  padding: 1rem 5.25rem 1rem 2.5rem;
-  font-size: 1.4rem;
-  font-family: 'Great Vibes', cursive;
-  font-weight: 700;
-  position: absolute;
-  left: 0;
-  top: 110px;
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    calc(100% - 44px) 22%,
-    100% 44%,
-    calc(100% - 44px) 66%,
-    100% 88%,
-    calc(100% - 44px) 100%,
-    0 100%
-  );
-  opacity: 1;
-  z-index: 50;
-  box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.6);
+  position: absolute;           /* anchored to viewport */
+  top: 70px;                 /* adjust vertical position */
+  left: -35px;                   /* true left edge of page */
+  z-index: 40;               /* above hero but below nav dropdowns if any */
+  max-width: 350px;          /* adjust banner size */
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
 }
+
+.free-estimate-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;      /* avoids interfering with clicks underneath */
+  user-select: none;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+  animation: fadeInBanner 0.6s ease-in;
+}
+
+/* Responsive scaling */
+@media (max-width: 768px) {
+  .free-estimate-banner {
+    top: 70px;
+    max-width: 260px;
+  }
+}
+
+/* Subtle fade-in on load */
+@keyframes fadeInBanner {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
 
 /* ============================= */
 /* Hero Section */
