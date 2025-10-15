@@ -17,6 +17,8 @@
   --deep-gray: #151515;
   --elegant-red: #7B2C2C;
   --banner-height: 420px;
+
+  --transparent: rgba(0,0,0,0);
 }
 
 /* ============================= */
@@ -49,29 +51,126 @@ header .logo {
   align-items: center;
 }
 
-header .logo img {
-  height: 50px;
-  margin-right: 1rem;
-  border: 2px solid var(--silver);
+/* Outer circular frame — stays fixed */
+/* Outer circular frame — now acts as a positioning wrapper only */
+header .logo-frame {
+  position: relative;             /* lets the image position inside */
+  height: 60px;
+  width: 60px;
+  border: none;
   border-radius: 50%;
+  overflow: hidden;
+  margin-right: 1rem;
+  flex-shrink: 0;
+  display: block;
+  background: none;               /* no visible background */
 }
 
+/* Logo image fills and covers frame completely */
+header .logo-frame img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.55);          /* fine-tune: increase/decrease slightly to fill ring */
+  transform-origin: center;
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+  line-height: 0;
+  z-index: 5;                      /* sits above any frame artifacts */
+  image-rendering: -webkit-optimize-contrast;
+}
+
+
+/* Header title — seamless metallic shimmer (continuous left → right) */
 header h1 {
   font-family: 'Oswald', sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   margin: 0;
   letter-spacing: 1px;
-  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  /* Polished silver gradient with highlight band */
+  background: linear-gradient(
+    115deg,
+    #9e9e9e 0%,
+    #d9d9d9 20%,
+    #ffffff 50%,   /* strong highlight */
+    #d0d0d0 60%,
+    #a8a8a8 80%,
+    #9e9e9e 100%
+  );
+  background-size: 300% 100%;      /* allows continuous horizontal scroll */
+  background-repeat: repeat;       /* ensures seamless looping */
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+
+  /* Subtle metallic glow */
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.25),
+               0 0 12px rgba(255, 255, 255, 0.1);
+
+  /* ✨ Continuous shimmer animation */
+  animation: shimmerScroll 8s linear infinite;
 }
 
+/* Continuous scroll — left to right loop */
+@keyframes shimmerScroll {
+  0%   { background-position: -150% 0; }
+  100% { background-position: 150% 0; }
+}
+
+
+
+/* Metallic silver shimmer on nav links */
 nav a {
-  color: white;
-  margin-left: 1.5rem;
-  text-decoration: none;
+  position: relative;
+  display: inline-block;
   font-weight: 700;
   font-family: 'Oswald', sans-serif;
   text-transform: uppercase;
+  margin-left: 1.5rem;
+  text-decoration: none;
+  background: linear-gradient(
+    115deg,
+    #9e9e9e 0%,
+    #d9d9d9 20%,
+    #ffffff 50%,  /* strong highlight */
+    #d0d0d0 60%,
+    #a8a8a8 80%,
+    #9e9e9e 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.15),
+               0 0 10px rgba(255, 255, 255, 0.05);
+  animation: shimmerScroll 8s linear infinite;
+  transition: transform 0.2s ease, text-shadow 0.3s ease;
 }
+
+/* Small hover effect — makes text feel reactive and glossy */
+nav a:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 12px rgba(255,255,255,0.35);
+}
+
+/* Optional active link pulse (for current page highlight) */
+nav a.active {
+  text-shadow: 0 0 12px rgba(255,255,255,0.5),
+               0 0 20px rgba(255,255,255,0.3);
+}
+
 
 /* ============================= */
 /* Free Estimate Banner */
@@ -79,6 +178,7 @@ nav a {
 .free-estimate-banner {
   background-color: var(--elegant-red);
   color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.55);
   display: inline-block;
   padding: 1rem 5.25rem 1rem 2.5rem;
   font-size: 1.4rem;
@@ -110,47 +210,57 @@ nav a {
               url('assets/img/hero.jpg') center/cover;
   color: white;
   text-align: center;
-  padding: 6rem 2rem;
+  padding: 6rem 2rem 6rem 2rem;
   position: relative;
   border-bottom: 4px solid var(--gold);
   z-index: 1;
   overflow: hidden;
 }
 
+/* Hero logo placeholder — perfect flush fit (no extra space at all) */
 .hero img.logo-placeholder {
-  height: 150px;
-  margin: 1.5rem 0;
-  border: 3px solid var(--silver);
-  border-radius: 50%;
-  background-color: rgba(255,255,255,0.05);
-  padding: 10px;
+  width: 200px;               /* adjust size as needed */
+  height: 200px;              /* equal width/height keeps it circular */
+  border-radius: 50%;         /* perfect circle */
+  
+  /* gold ring tight to the image edge */
+  border: 1px solid var(--transparent);
+  object-fit: cover;          /* ensures image fills the circle fully */
+  
+  /* remove all breathing room */
+  padding: 0;
+  margin: 0 auto;             /* keeps it centered horizontally */
+  display: block;             /* removes inline spacing */
+  line-height: 0;             /* fixes stray space below inline images */
+  background: none;           /* ensures no background halo */
 }
 
 .hero h2 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  background: linear-gradient(to right, var(--gold), var(--silver));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: 2px;
-  line-height: 1.3;
-  opacity: 0;
-  animation: fadeIn 2s ease forwards;
-  animation-delay: 0.5s;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;          /* base from header sizing */
+  font-weight: bold;
+  text-transform: capitalize;
+  margin: 0;
+  padding: 2rem 2rem;
+  line-height: 1.05;          /* compressed like the s effect */
+  letter-spacing: .8px;
+  color: white;
+  display: inline-block;      /* keeps inline flow behavior */
+  vertical-align: top;        /* aligns same baseline as before */
 }
 
 .hero h2 span {
-  display: block;
-  font-size: 2.2rem;
-  font-family: 'Oswald', sans-serif;
-  text-transform: uppercase;
-  background: linear-gradient(to right, var(--gold), var(--silver));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: 2px;
+  display: inline;            /* NOT block — key difference */
+  font-size: 1.5rem;             /* exactly the same size */
+  font-weight: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  color: inherit;
 }
+
+
+
+
 
 @keyframes fadeIn {
   to { opacity: 1; }
@@ -343,12 +453,44 @@ nav a {
   border-top: 3px solid var(--silver);
 }
 
+/* Deep gold gradient & soft glow for footer heading */
 .cta h2 {
   font-family: 'Oswald', sans-serif;
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  text-shadow: 0 0 8px var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  /* darker, richer golds — antique brass tone */
+  background: linear-gradient(
+    135deg,
+    #8b6b2e 0%,
+    #b08d57 25%,
+    #c5a66b 50%,
+    #b08d57 75%,
+    #7a5c23 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* soft radiant glow */
+  text-shadow:
+    0 0 6px rgba(176, 141, 87, 0.25),
+    0 0 12px rgba(192, 160, 95, 0.15),
+    0 0 20px rgba(140, 100, 40, 0.1);
+
+  /* gentle slow shimmer for life */
+  animation: goldFlow 10s ease-in-out infinite alternate;
 }
+
+/* Subtle animated movement — “breathing” gradient */
+@keyframes goldFlow {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
 
 .cta button {
   background-color: var(--gold);
