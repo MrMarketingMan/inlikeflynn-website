@@ -32,6 +32,10 @@ body {
   background-color: var(--cream);
   color: var(--charcoal);
 }
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
 
 
 /* ============================= */
