@@ -347,18 +347,6 @@ nav a.active {
   z-index: 30; /* 🍂 between price (20) and text (40) */
 }
 
-.click-cursor {
-  position: absolute;
-  bottom: 1px;
-  right: 2px;
-  width: 28px;
-  height: auto;
-  animation: cursorClick 1.5s infinite;
-  transform-origin: bottom right;
-  z-index: 50; /* 🖱️ always top */
-}
-
-
 
 @keyframes bannerPress {
   0%   { transform: scale(1); box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
@@ -518,6 +506,130 @@ nav a.active {
   box-shadow: 0 0 10px var(--silver);
 }
 
+/* ===========================
+   Section Divider (Slim Version)
+=========================== */
+.section-divider {
+  width: 100%;
+  height: 1.5px; /* slightly thinner than the one above services */
+  background-color: var(--gold);
+  opacity: 0.85;
+}
+
+/* ===========================
+   About Us Section
+=========================== */
+.about {
+  max-width: 1100px;
+  margin: 5rem auto;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.about-image {
+  flex: 1 1 45%;
+  text-align: center;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 480px;
+  display: block; /* removes any default inline spacing or baseline gap */
+  border-radius: 1rem;
+  box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.40); /* softened shadow */
+  margin: 0 auto;
+  border: none; /* ensures no stray border is drawn */
+}
+.about-image .image-caption {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.about-content {
+  flex: 1 1 50%;
+}
+
+.about-content h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.4rem;
+  color: var(--charcoal);
+  margin-bottom: 1rem;
+  border-left: 5px solid var(--gold);
+  padding-left: 1rem;
+}
+
+.about-content p {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.about-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.about-values div {
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-left: 4px solid var(--gold);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform, box-shadow;
+}
+
+.about-values div:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.about-values h4 {
+  margin: 0.25rem 0;
+  font-family: 'Oswald', sans-serif;
+  color: var(--charcoal);
+  font-size: 1.1rem;
+}
+
+.cta {
+  margin-top: 2.5rem;
+}
+
+.cta a {
+  text-decoration: none;
+  color: white;
+  background: var(--green);
+  padding: 0.9rem 1.8rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  transition: background 0.2s ease;
+}
+
+.cta a:hover {
+  background: #1d3f22;
+}
+
+@media (max-width: 800px) {
+  .about {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-content h2 {
+    border-left: none;
+    border-top: 3px solid var(--gold);
+    padding-top: 0.5rem;
+  }
+}
+
+
 /* ============================= */
 /* Footer */
 /* ============================= */
@@ -530,6 +642,24 @@ footer {
   font-family: 'Montserrat', sans-serif;
   border-top: 2px solid var(--gold);
 }
+
+/* ============================= */
+/* Fade-In Scroll Animations */
+/* ============================= */
+
+/* Starting state — invisible and slightly lowered */
+.fade-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+
+/* When in view — fade in and slide up */
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 /* ─────────────── GUTTER MODAL STYLES ─────────────── */
 /* Overlay that covers the page */
@@ -699,5 +829,31 @@ footer {
   box-shadow: 0 3px 8px rgba(0,0,0,0.3);
 }
 
+/* ============================= */
+/* CTA Phone Link — Seamless Inline Style */
+/* ============================= */
+.cta-call {
+  color: #ffffff;                 /* white text to match surrounding text */
+  font-family: inherit;           /* inherit the section font */
+  font-size: inherit;             /* exact same size as paragraph text */
+  font-weight: inherit;           /* same weight as the rest of the sentence */
+  text-decoration: none;          /* remove default blue underline */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.75); /* elegant white underline */
+  padding-bottom: 2px;            /* slight spacing for better balance */
+  transition: border-color 0.3s ease, text-shadow 0.3s ease;
+
+  /* Subtle soft-blue glow for depth */
+  text-shadow:
+    0 0 4px rgba(80, 160, 255, 0.25),
+    0 0 6px rgba(80, 160, 255, 0.15);
+}
+
+.cta-call:hover {
+  color: #eaf4ff;                 /* slight tint shift for hover */
+  border-bottom-color: rgba(160, 210, 255, 0.9); /* lighter blue-white underline */
+  text-shadow:
+    0 0 6px rgba(120, 190, 255, 0.45),
+    0 0 12px rgba(120, 190, 255, 0.35);
+}
 
 

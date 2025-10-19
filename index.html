@@ -40,11 +40,11 @@
 <body>
   <header>
     <div class="logo">
-  <div class="logo-frame">
-    <img src="/src/assets/img/header-logo.png" alt="In Like Flynn Logo" loading="lazy"/>
-  </div>
-  <h1>In Like Flynn LLC</h1>
-</div>
+      <div class="logo-frame">
+        <img src="/src/assets/img/header-logo.png" alt="In Like Flynn Logo" loading="lazy"/>
+      </div>
+      <h1>In Like Flynn LLC</h1>
+    </div>
 
     <nav aria-label="Primary navigation">
       <a href="#services">Services</a>
@@ -53,33 +53,28 @@
     </nav>
   </header>
 
-<!-- Free Estimate Banner (PNG Version) -->
-<div class="free-estimate-banner">
-  <img src="/src/assets/img/estimate-banner.png" alt="Free Estimates - Call or Text 717-753-1172" />
-</div>
+  <!-- Free Estimate Banner -->
+  <div class="free-estimate-banner">
+    <img src="/src/assets/img/estimate-banner.png" alt="Free Estimates - Call or Text 717-753-1172" />
+  </div>
 
   <!-- ============================= -->
   <!-- HERO SECTION -->
   <!-- ============================= -->
   <section class="hero" aria-labelledby="hero-heading">
     <h2 id="hero-heading">
-  In Like Flynn LLC<br />
-  <span>Drywall Specialists &amp; Construction Services</span>
-</h2>
-
+      In Like Flynn LLC<br />
+      <span>Drywall Specialists &amp; Construction Services</span>
+    </h2>
 
     <img src="/src/assets/img/logo.png" alt="In Like Flynn logo badge" class="logo-placeholder" loading="lazy">
-
-
     <p>Professional • Reliable • Affordable</p>
 
     <button type="button" aria-label="Request a free estimate">
       Get a Free Estimate
     </button>
 
-    <!-- ============================= -->
-    <!-- Seasonal Gutter Banner (acts as modal trigger) -->
-    <!-- ============================= -->
+    <!-- Gutter Banner -->
     <div
       class="gutter-banner"
       id="openGutterModal"
@@ -96,7 +91,6 @@
         <p class="subtext">Fall Special • Limited Time</p>
       </div>
 
-      <!-- pixel cursor -->
       <img
         src="/src/assets/img/cursor.png"
         alt=""
@@ -104,7 +98,6 @@
         aria-hidden="true"
       />
 
-      <!-- falling leaves viewport -->
       <div class="leaf-layer" aria-hidden="true"></div>
     </div>
   </section>
@@ -112,13 +105,13 @@
   <!-- ============================= -->
   <!-- SERVICES SECTION -->
   <!-- ============================= -->
-  <section class="services" id="services" aria-labelledby="services-heading">
+  <section class="services fade-section" id="services" aria-labelledby="services-heading">
     <h2 id="services-heading">Our Services</h2>
     <div class="service-grid">
       <div class="service-item">Drywall</div>
       <div class="service-item">Painting</div>
       <div class="service-item">Vinyl Siding</div>
-      <div class="service-item">Landscaping &amp; Garden Care</div>
+      <div class="service-item">Plumbing &amp; Electric</div>
       <div class="service-item">Power Washing</div>
       <div class="service-item">Demolition</div>
       <div class="service-item">Door &amp; Window Installation</div>
@@ -130,25 +123,87 @@
     </div>
   </section>
 
+  <!-- Divider -->
+  <div class="section-divider"></div>
+
+  <!-- ============================= -->
+  <!-- ABOUT US SECTION -->
+  <!-- ============================= -->
+  <section class="about fade-section" id="about">
+    <div class="about-image">
+      <img src="/src/assets/img/ryan-working.webp" alt="Ryan Flynn working on site">
+      <p class="image-caption">Lake Heritage — a dock build and a lucky catch.</p>
+    </div>
+
+    <div class="about-content">
+      <h2>Built on Trust, Craftsmanship, and Care</h2>
+
+      <p>
+        In Like Flynn LLC is a locally trusted handyman and construction company
+        built on skill, reliability, and pride in every detail. We handle everything
+        from drywall finishing to custom decks — always with the same goal:
+        top-quality work done right the first time.
+      </p>
+
+      <p>
+        Founded by <strong>Ryan Flynn</strong>, a seasoned craftsman and current
+        <strong>Lead Carpenter & Supervisor at Gettysburg Hospital</strong>, our
+        work is backed by years of experience in contamination control, precision
+        carpentry, and code compliance. That background ensures every project meets
+        the highest standards of safety and professionalism — whether it’s your home,
+        office, or renovation site.
+      </p>
+
+      <p>
+        Our small, dedicated team blends technical expertise with genuine customer care.
+        You’ll always deal directly with people who value honesty, craftsmanship, and
+        leaving every space better than they found it.
+      </p>
+
+      <div class="about-values">
+        <div>
+          <h4>🛠️ Quality Workmanship</h4>
+          <p>Every cut, coat, and corner is done with precision and pride.</p>
+        </div>
+        <div>
+          <h4>🤝 Honest Communication</h4>
+          <p>Clear updates, transparent pricing, and no hidden surprises.</p>
+        </div>
+        <div>
+          <h4>⏰ Reliable Service</h4>
+          <p>We show up on time, finish on schedule, and clean up properly.</p>
+        </div>
+        <div>
+          <h4>🏡 Locally Owned</h4>
+          <p>Proudly serving Gettysburg and surrounding communities.</p>
+        </div>
+      </div>
+
+      <div class="cta">
+        <a href="/contact.html">Get Your Free Estimate</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ============================= -->
   <!-- CTA SECTION -->
   <!-- ============================= -->
-  <section class="cta" id="contact" aria-labelledby="cta-heading">
+  <section class="cta fade-section" id="contact" aria-labelledby="cta-heading">
     <h2 id="cta-heading">Ready to Start Your Project?</h2>
     <p>
       Call or text us today at
       <a
-  href="tel:717-753-1172"
-  class="cta-call"
-  aria-label="Call In Like Flynn LLC at 717-753-1172"
-  >717-753-1172</a>
+        href="tel:717-753-1172"
+        class="cta-call"
+        aria-label="Call In Like Flynn LLC at 717-753-1172"
+      >717-753-1172</a>
     </p>
   </section>
 
   <!-- ============================= -->
   <!-- FOOTER -->
   <!-- ============================= -->
-  <footer id="about">
+  <footer class="fade-section" id="footer">
     © 2025 In Like Flynn LLC. All rights reserved.
   </footer>
 
@@ -187,5 +242,3 @@
   <script type="module" src="/src/js/main.js"></script>
 </body>
 </html>
-  <!-- Gutter Cleaning Modal (HTML partial only; styles & JS added in later steps) -->
-  <!-- Keep this near-raw so we can reuse in multiple pages -->
