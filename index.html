@@ -128,26 +128,26 @@
     </div>
   </section>
 
-  <!-- ============================= -->
-  <!-- SERVICES SECTION -->
-  <!-- ============================= -->
-  <section class="services fade-section" id="services" aria-labelledby="services-heading">
-    <h2 id="services-heading">Our Services</h2>
-    <div class="service-grid">
-      <div class="service-item">Drywall</div>
-      <div class="service-item">Painting</div>
-      <div class="service-item">Vinyl Siding</div>
-      <div class="service-item">Plumbing &amp; Electric</div>
-      <div class="service-item">Power Washing</div>
-      <div class="service-item">Demolition</div>
-      <div class="service-item">Door &amp; Window Installation</div>
-      <div class="service-item">Junk Removal</div>
-      <div class="service-item">Deck Repair</div>
-      <div class="service-item">Trim/Flooring</div>
-      <div class="service-item">Home Install</div>
-      <div class="service-item">Framing</div>
-    </div>
-  </section>
+ <!-- SERVICES SECTION -->
+<section class="services fade-section" id="services" aria-labelledby="services-heading">
+  <h2 id="services-heading">Our Services</h2>
+  <div class="service-grid">
+    <!-- Each service box now has a data-service key -->
+    <div class="service-item" data-service="drywall" tabindex="0" role="button" aria-label="Open drywall gallery">Drywall</div>
+    <div class="service-item" data-service="painting" tabindex="0" role="button" aria-label="Open painting gallery">Painting</div>
+    <div class="service-item" data-service="vinyl-siding" tabindex="0" role="button" aria-label="Open vinyl siding gallery">Vinyl Siding</div>
+    <div class="service-item" data-service="plumbing-electric" tabindex="0" role="button" aria-label="Open plumbing and electric gallery">Plumbing &amp; Electric</div>
+    <div class="service-item" data-service="power-washing" tabindex="0" role="button" aria-label="Open power washing gallery">Power Washing</div>
+    <div class="service-item" data-service="demolition" tabindex="0" role="button" aria-label="Open demolition gallery">Demolition</div>
+    <div class="service-item" data-service="door-window" tabindex="0" role="button" aria-label="Open door and window gallery">Door &amp; Window Installation</div>
+    <div class="service-item" data-service="junk-removal" tabindex="0" role="button" aria-label="Open junk removal gallery">Junk Removal</div>
+    <div class="service-item" data-service="deck-repair" tabindex="0" role="button" aria-label="Open deck repair gallery">Deck Repair</div>
+    <div class="service-item" data-service="trim-flooring" tabindex="0" role="button" aria-label="Open trim and flooring gallery">Trim/Flooring</div>
+    <div class="service-item" data-service="home-install" tabindex="0" role="button" aria-label="Open home install gallery">Home Install</div>
+    <div class="service-item" data-service="framing" tabindex="0" role="button" aria-label="Open framing gallery">Framing</div>
+  </div>
+</section>
+
 
   <!-- Divider -->
   <div class="section-divider"></div>
@@ -261,10 +261,37 @@
       </div>
     </div>
   </div>
+<!-- ============================= -->
+<!-- SERVICE GALLERY MODAL (updated simple version) -->
+<!-- ============================= -->
+<div class="svc-modal-overlay" id="svcGalleryOverlay" aria-hidden="true">
+  <div class="svc-modal" role="dialog" aria-modal="true" aria-labelledby="svcGalleryTitle">
+    <button class="svc-close" id="svcCloseBtn" aria-label="Close gallery">&times;</button>
+
+    <!-- Dynamic title -->
+    <h2 class="svc-title" id="svcGalleryTitle">Gallery</h2>
+
+    <!-- Grid container populated by JS -->
+    <div class="svc-grid" id="svcGrid">
+      <p class="svc-coming-soon">Pictures coming soon</p>
+    </div>
+  </div>
+
+  <!-- Lightbox for expanded image -->
+  <div class="svc-lightbox" id="svcLightbox" aria-hidden="true">
+    <button class="svc-lightbox-close" id="svcLightboxClose" aria-label="Close image">&times;</button>
+    <img id="svcLightboxImg" alt="Expanded project image" />
+    <div class="svc-lightbox-caption" id="svcLightboxCaption"></div>
+    <button class="svc-nav svc-prev" id="svcPrev" aria-label="Previous image">&#10094;</button>
+    <button class="svc-nav svc-next" id="svcNext" aria-label="Next image">&#10095;</button>
+  </div>
+</div>
+
 
   <!-- ============================= -->
   <!-- SCRIPTS -->
   <!-- ============================= -->
   <script type="module" src="/src/js/main.js"></script>
+  <script type="module" src="/src/js/animations/service-gallery.js"></script>
 </body>
 </html>

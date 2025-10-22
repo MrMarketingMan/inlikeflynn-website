@@ -1184,4 +1184,190 @@ footer {
     0 0 12px rgba(120, 190, 255, 0.35);
 }
 
+/* ──────────────────────────────
+   SERVICE GALLERY MODAL (namespaced: svc-)
+   ────────────────────────────── */
+
+/* Full-screen overlay behind the modal */
+.svc-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.72);
+  display: none;             /* hidden by default */
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 200;              /* above gutter modal (yours is 100) */
+}
+
+/* Toggle via JS */
+.svc-modal-overlay.active {
+  display: flex;
+}
+
+/* Main modal box */
+.svc-modal {
+  background: var(--cream);
+  color: var(--charcoal);
+  width: min(1000px, 92vw);
+  max-height: 88vh;
+  overflow: auto;
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 2px solid var(--gold);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+/* Close (X) */
+.svc-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: var(--darkgreen);
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+.svc-close:hover { color: var(--gold); }
+
+/* Title & subtitle */
+.svc-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.8rem;
+  text-align: center;
+  margin: 0.5rem 0 0.25rem 0;
+  text-transform: uppercase;
+}
+.svc-subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+/* Responsive grid for images */
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.85rem;
+}
+
+/* Individual cell */
+.svc-cell {
+  position: relative;
+  border: 2px solid color-mix(in srgb, var(--gold) 70%, #fff 30%);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* Before/After ribbons (optional labels) */
+.svc-ribbon {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #ffffffd9;
+  color: #666;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid #e6e6e6;
+}
+
+/* Images inside cells */
+.svc-cell img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: zoom-in;           /* indicates expand behavior */
+  transition: transform 0.25s ease;
+}
+.svc-cell img:hover { transform: scale(1.03); }
+
+.svc-coming-soon {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  padding: 2rem 0;
+}
+
+/* Lightbox (expanded view) */
+.svc-lightbox {
+  position: fixed;
+  inset: 0;
+  display: none;             /* hidden until opened */
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.92);
+  z-index: 210;
+}
+.svc-lightbox.active { display: flex; }
+
+.svc-lightbox img {
+  max-width: 92vw;
+  max-height: 84vh;
+  border-radius: 8px;
+  border: 1px solid #ffffff40;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+}
+
+/* Caption under expanded image */
+.svc-lightbox-caption {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #f3f3f3;
+  font-size: 0.95rem;
+  background: rgba(0,0,0,0.35);
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #ffffff25;
+}
+
+/* Lightbox controls */
+.svc-lightbox-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: 2px solid var(--gold);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1.6rem;
+  line-height: 1;
+  padding: 2px 8px 4px;
+  cursor: pointer;
+}
+.svc-lightbox-close:hover { background: #ffffff10; }
+
+.svc-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ffffff12;
+  border: 1px solid #ffffff35;
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.svc-prev { left: 24px; }
+.svc-next { right: 24px; }
+.svc-nav:hover { background: #ffffff25; }
+
+@media (max-width: 560px) {
+  .svc-modal { padding: 1rem; }
+  .svc-title { font-size: 1.4rem; }
+  .svc-grid { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+}
 
