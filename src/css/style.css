@@ -1,7 +1,6 @@
 ﻿/* ============================= */
 /* Fonts & Root Variables */
 /* ============================= */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&family=Great+Vibes&display=swap');
 @import './leaves.css';
 
 :root {
@@ -506,6 +505,15 @@ nav a.active {
   border-radius: 8px;
   font-family: 'Montserrat', sans-serif;
   box-shadow: 0 0 10px var(--silver);
+}
+
+/* Makes the <a> wrapper act invisible and non-intrusive */
+.call-link-wrapper {
+  text-decoration: none;
+  display: inline-block; /* keeps button box alignment */
+}
+.call-link-wrapper button {
+  pointer-events: none; /* ensures the link handles the click, not the inner button */
 }
 
 .hero h2,

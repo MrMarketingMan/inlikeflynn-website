@@ -26,9 +26,16 @@
     property="og:description"
     content="Professional, reliable, and affordable home services. Call or text 717-753-1172 for a free estimate."
   />
-  <meta property="og:image" content="/src/assets/img/logo.png" />
-  <meta property="og:url" content="https://www.inlikeflynnllc.com" />
+  <meta property="og:image" content="/logo.png">
+  <meta property="og:image:alt" content="In Like Flynn LLC logo">
   <link rel="canonical" href="https://www.inlikeflynnllc.com" />
+  <!-- Google Fonts (optimized preload) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&family=Great+Vibes&display=swap"
+    rel="stylesheet"
+  >
   <link
     rel="sitemap"
     type="application/xml"
@@ -96,9 +103,12 @@
     <img src="/src/assets/img/logo.png" alt="In Like Flynn logo badge" class="logo-placeholder" loading="lazy">
     <p>Professional • Reliable • Affordable</p>
 
-    <button type="button" aria-label="Request a free estimate">
-      Get a Free Estimate
-    </button>
+    <a href="tel:+17177531172" class="call-link-wrapper" aria-label="Call In Like Flynn LLC for a free estimate">
+  <button type="button" aria-label="Request a free estimate">
+    Get a Free Estimate
+  </button>
+</a>
+
 
     <!-- Gutter Banner -->
     <div
@@ -206,7 +216,7 @@
       </div>
 
       <div class="cta">
-        <a href="/contact.html">Get Your Free Estimate</a>
+       <a href="#contact">Get Your Free Estimate</a>
       </div>
     </div>
   </section>
