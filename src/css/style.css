@@ -222,8 +222,9 @@ nav a.active {
    ========================================= */
 @media (max-width: 768px) {
   .free-estimate-banner {
-    top: 110px;    /* 🔧 move lower on phones — increase or decrease as needed */
-    max-width: 260px; /* optional: slightly smaller banner for narrow viewports */
+    top: clamp(93.5px, calc(110px + 0.18 * (100vh - 844px)), 126.5px); /* fluid */ /* 🔧 move lower on phones — increase or decrease as needed */
+    left: clamp(-40.25px, calc(-35px + 0.12 * (100vw - 390px)), -29.75px); /* fluid */
+    max-width: clamp(221px, calc(260px + 0.20 * (100vw - 390px)), 299px); /* fluid */ /* optional: slightly smaller banner for narrow viewports */
   }
 }
 
@@ -247,7 +248,10 @@ nav a.active {
 .mobile-header {
   background-color: #2F5233;         /* dark green base */
   border-bottom: 3px solid #B08D57;  /* gold accent divider */
-  padding: 0.8rem 1rem 1rem;
+  padding-top: clamp(10.88px, calc(12.8px + 0.12 * (100vh - 844px)), 14.72px); /* fluid */
+  padding-right: clamp(13.6px, calc(16px + 0.10 * (100vw - 390px)), 18.4px); /* fluid */
+  padding-bottom: clamp(13.6px, calc(16px + 0.12 * (100vh - 844px)), 18.4px); /* fluid */
+  padding-left: clamp(13.6px, calc(16px + 0.10 * (100vw - 390px)), 18.4px); /* fluid */
   text-align: center;
   color: white;
   position: relative;
@@ -260,15 +264,15 @@ nav a.active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
+  gap: clamp(5.44px, calc(6.4px + 0.08 * (100vw - 390px)), 7.36px); /* fluid */
   position: relative;
   z-index: 5;                         /* above quotes */
 }
 
 /* 🔧 Logo: no-outline, perfect circle, mobile-only */
 .mobile-header .logo-frame {
-  width: 60px;                        /* 🔧 logo size */
-  height: 60px;
+  width: clamp(51px, calc(60px + 0.08 * (100vw - 390px)), 69px); /* fluid */                        /* 🔧 logo size */
+  height: clamp(51px, calc(60px + 0.08 * (100vw - 390px)), 69px); /* fluid */
   border-radius: 50%;
   overflow: hidden;                   /* clip cleanly */
   background: transparent;            /* remove halo */
@@ -286,7 +290,7 @@ nav a.active {
 /* Title: silver shimmer */
 .mobile-header h1 {
   font-family: 'Oswald', sans-serif;
-  font-size: 1.3rem;                  /* 🔧 title size */
+  font-size: clamp(17.68px, calc(20.8px + 0.12 * (100vw - 390px)), 23.92px); /* fluid */                  /* 🔧 title size */
   margin: 0;
   letter-spacing: 1px;
   font-weight: 700;
@@ -299,17 +303,17 @@ nav a.active {
 
 /* Nav: silver shimmer, compact spacing */
 .mobile-header nav {
-  margin-top: 0.6rem;
+  margin-top: clamp(8.16px, calc(9.6px + 0.10 * (100vh - 844px)), 11.04px); /* fluid */
   display: flex;
   justify-content: center;
-  gap: 1.4rem;                        /* 🔧 spacing between links */
+  gap: clamp(19.04px, calc(22.4px + 0.10 * (100vw - 390px)), 25.76px); /* fluid */                        /* 🔧 spacing between links */
 }
 .mobile-header nav a {
   font-family: 'Oswald', sans-serif;
   text-transform: uppercase;
   text-decoration: none;
   font-weight: 700;
-  font-size: 0.9rem;                  /* 🔧 nav text size */
+  font-size: clamp(12.24px, calc(14.4px + 0.10 * (100vw - 390px)), 16.56px); /* fluid */                  /* 🔧 nav text size */
   background: linear-gradient(115deg, #9e9e9e 0%, #d9d9d9 20%, #ffffff 50%, #d0d0d0 60%, #a8a8a8 80%, #9e9e9e 100%);
   background-size: 300% 100%;
   -webkit-background-clip: text;
@@ -329,11 +333,11 @@ nav a.active {
   position: absolute;                 /* anchored within header */
   font-family: 'Playfair Display', serif; /* elegant serif */
   font-style: italic; font-weight: 600;
-  font-size: 1.05rem;                 /* 🔧 quote font size */
+  font-size: clamp(14.28px, calc(16.8px + 0.10 * (100vw - 390px)), 19.32px); /* fluid */                 /* 🔧 quote font size */
   line-height: 1.3; letter-spacing: 0.2px;
   pointer-events: none;               /* doesn't block clicks */
   z-index: 1;                         /* behind logo/title */
-  width: 250px;                       /* 🔧 text box width */
+  width: clamp(212.5px, calc(250px + 0.20 * (100vw - 390px)), 287.5px); /* fluid */                       /* 🔧 text box width */
 
   /* 🔧 OPACITY — 0.35 subtle → 0.65 stronger */
   opacity: 0.50;
@@ -353,9 +357,19 @@ nav a.active {
   transform-origin: center;
 }
 /* 🔧 Left quote position/rotation */
-.mobile-header .corner-quote.left  { top: 38px; left: 8px;  transform: rotate(-22deg); text-align: left; }
+.mobile-header .corner-quote.left  {
+  top: clamp(32.3px, calc(38px + 0.12 * (100vh - 844px)), 43.7px); /* fluid */
+  left: clamp(6.8px, calc(8px + 0.08 * (100vw - 390px)), 9.2px); /* fluid */
+  transform: rotate(-22deg);
+  text-align: left;
+}
 /* 🔧 Right quote position/rotation */
-.mobile-header .corner-quote.right { top: 44px; right: 12px; transform: rotate(15deg);  text-align: right; }
+.mobile-header .corner-quote.right {
+  top: clamp(37.4px, calc(44px + 0.12 * (100vh - 844px)), 50.6px); /* fluid */
+  right: clamp(10.2px, calc(12px + 0.08 * (100vw - 390px)), 13.8px); /* fluid */
+  transform: rotate(15deg);
+  text-align: right;
+}
 
 /* Shimmer animations shared with desktop */
 @keyframes shimmerScroll { 0% {background-position: -150% 0;} 100% {background-position: 150% 0;} }
@@ -365,28 +379,55 @@ nav a.active {
    Extra-small phones (fine-tune)
    ========================================= */
 @media (max-width: 480px) {
-  .mobile-header .logo-frame { width: 45px; height: 45px; }  /* shrink logo slightly */
-  .mobile-header h1          { font-size: 1.15rem; }         /* scale title down */
-  .mobile-header nav a       { font-size: 0.85rem; }         /* smaller nav text */
+  .mobile-header .logo-frame {
+    width: clamp(38.25px, calc(45px + 0.08 * (100vw - 390px)), 51.75px); /* fluid */  /* shrink logo slightly */
+    height: clamp(38.25px, calc(45px + 0.08 * (100vw - 390px)), 51.75px); /* fluid */
+  }
+  .mobile-header h1 {
+    font-size: clamp(15.64px, calc(18.4px + 0.10 * (100vw - 390px)), 21.16px); /* fluid */         /* scale title down */
+  }
+  .mobile-header nav a {
+    font-size: clamp(11.56px, calc(13.6px + 0.10 * (100vw - 390px)), 15.64px); /* fluid */         /* smaller nav text */
+  }
 
-  .mobile-header .corner-quote.corner-quote.right { font-size: 0.9rem; opacity: 0.70; }
+  .mobile-header .corner-quote.corner-quote.right {
+    font-size: clamp(12.24px, calc(14.4px + 0.10 * (100vw - 390px)), 16.56px); /* fluid */
+    opacity: 0.70;
+  }
 
   /* 🔧 micro-positions so both quotes stay fully in view */
-  .mobile-header .corner-quote.right { top: 24px; right: 12px; width: 140px; }
+  .mobile-header .corner-quote.right {
+    top: clamp(20.4px, calc(24px + 0.12 * (100vh - 844px)), 27.6px); /* fluid */
+    right: clamp(10.2px, calc(12px + 0.08 * (100vw - 390px)), 13.8px); /* fluid */
+    width: clamp(119px, calc(140px + 0.15 * (100vw - 390px)), 161px); /* fluid */
+  }
 }
 
 /* =========================================
    Extra-small phones (fine-tune)
    ========================================= */
 @media (max-width: 480px) {
-  .mobile-header .logo-frame { width: 45px; height: 45px; }  /* shrink logo slightly */
-  .mobile-header h1          { font-size: 1.15rem; }         /* scale title down */
-  .mobile-header nav a       { font-size: 0.85rem; }         /* smaller nav text */
+  .mobile-header .logo-frame {
+    width: clamp(38.25px, calc(45px + 0.08 * (100vw - 390px)), 51.75px); /* fluid */  /* shrink logo slightly */
+    height: clamp(38.25px, calc(45px + 0.08 * (100vw - 390px)), 51.75px); /* fluid */
+  }
+  .mobile-header h1 {
+    font-size: clamp(15.64px, calc(18.4px + 0.10 * (100vw - 390px)), 21.16px); /* fluid */         /* scale title down */
+  }
+  .mobile-header nav a {
+    font-size: clamp(11.56px, calc(13.6px + 0.10 * (100vw - 390px)), 15.64px); /* fluid */         /* smaller nav text */
+  }
 
-  .mobile-header .corner-quote.corner-quote.left { font-size: 0.8rem; opacity: 0.70; }
+  .mobile-header .corner-quote.corner-quote.left {
+    font-size: clamp(10.88px, calc(12.8px + 0.10 * (100vw - 390px)), 14.72px); /* fluid */
+    opacity: 0.70;
+  }
 
   /* 🔧 micro-positions so both quotes stay fully in view */
-  .mobile-header .corner-quote.left  { top: 28px; left: 1px; }
+  .mobile-header .corner-quote.left  {
+    top: clamp(23.8px, calc(28px + 0.12 * (100vh - 844px)), 32.2px); /* fluid */
+    left: clamp(0.85px, calc(1px + 0.02 * (100vw - 390px)), 1.15px); /* fluid */
+  }
 }
 
 
@@ -581,16 +622,48 @@ nav a.active {
     position: relative;        /* removes absolute positioning */
     bottom: auto;
     right: auto;
-    margin-top: .7rem;        /* spacing below contact button */
+    margin-top: clamp(9.52px, calc(11.2px + 0.12 * (100vh - 844px)), 12.88px); /* fluid */        /* spacing below contact button */
     margin-left: auto;
     margin-right: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: clamp(11.9px, calc(14px + 0.12 * (100vh - 844px)), 16.1px); /* fluid */
+    padding-right: clamp(17px, calc(20px + 0.12 * (100vw - 390px)), 23px); /* fluid */
+    padding-bottom: clamp(11.9px, calc(14px + 0.12 * (100vh - 844px)), 16.1px); /* fluid */
+    padding-left: clamp(17px, calc(20px + 0.12 * (100vw - 390px)), 23px); /* fluid */
+    gap: clamp(10.2px, calc(12px + 0.10 * (100vw - 390px)), 13.8px); /* fluid */
+    max-width: clamp(255px, calc(300px + 0.20 * (100vw - 390px)), 345px); /* fluid */
 
     /* 🔧 Mobile-only scale */
     transform: scale(0.65) !important;  /* add !important so animation doesn’t override */
     transform-origin: center center;    /* keep it balanced */
+  }
+
+  .gutter-price {
+    font-size: clamp(25.84px, calc(30.4px + 0.12 * (100vw - 390px)), 34.96px); /* fluid */
+    padding-top: clamp(8.5px, calc(10px + 0.08 * (100vh - 844px)), 11.5px); /* fluid */
+    padding-right: clamp(13.6px, calc(16px + 0.10 * (100vw - 390px)), 18.4px); /* fluid */
+    padding-bottom: clamp(8.5px, calc(10px + 0.08 * (100vh - 844px)), 11.5px); /* fluid */
+    padding-left: clamp(13.6px, calc(16px + 0.10 * (100vw - 390px)), 18.4px); /* fluid */
+  }
+
+  .gutter-price .currency {
+    font-size: clamp(13.6px, calc(16px + 0.10 * (100vw - 390px)), 18.4px); /* fluid */
+  }
+
+  .gutter-text h3 {
+    font-size: clamp(17.68px, calc(20.8px + 0.10 * (100vw - 390px)), 23.92px); /* fluid */
+  }
+
+  .gutter-text .subtext {
+    font-size: clamp(12.24px, calc(14.4px + 0.10 * (100vw - 390px)), 16.56px); /* fluid */
+  }
+
+  .click-cursor {
+    bottom: clamp(0.85px, calc(1px + 0.02 * (100vh - 844px)), 1.15px); /* fluid */
+    right: clamp(1.7px, calc(2px + 0.08 * (100vw - 390px)), 2.3px); /* fluid */
+    width: clamp(23.8px, calc(28px + 0.10 * (100vw - 390px)), 32.2px); /* fluid */
   }
 }
 /* =========================================
@@ -598,11 +671,39 @@ nav a.active {
    ========================================= */
 @media (max-width: 768px) {
   .hero {
-    padding-bottom: .8rem !important; /* 🔧 decrease padding (was likely higher) */
+    padding-top: clamp(81.6px, calc(96px + 0.15 * (100vh - 844px)), 110.4px); /* fluid */
+    padding-right: clamp(27.2px, calc(32px + 0.12 * (100vw - 390px)), 36.8px); /* fluid */
+    padding-bottom: clamp(10.88px, calc(12.8px + 0.12 * (100vh - 844px)), 14.72px) !important; /* fluid */ /* 🔧 decrease padding (was likely higher) */
+    padding-left: clamp(27.2px, calc(32px + 0.12 * (100vw - 390px)), 36.8px); /* fluid */
+  }
+
+  .hero img.logo-placeholder {
+    width: clamp(170px, calc(200px + 0.15 * (100vw - 390px)), 230px); /* fluid */
+    height: clamp(170px, calc(200px + 0.15 * (100vw - 390px)), 230px); /* fluid */
+  }
+
+  .hero h2 {
+    font-size: clamp(20.4px, calc(24px + 0.12 * (100vw - 390px)), 27.6px); /* fluid */
+    padding-top: clamp(27.2px, calc(32px + 0.12 * (100vh - 844px)), 36.8px); /* fluid */
+    padding-right: clamp(27.2px, calc(32px + 0.12 * (100vw - 390px)), 36.8px); /* fluid */
+    padding-bottom: clamp(27.2px, calc(32px + 0.12 * (100vh - 844px)), 36.8px); /* fluid */
+    padding-left: clamp(27.2px, calc(32px + 0.12 * (100vw - 390px)), 36.8px); /* fluid */
+  }
+
+  .hero h2 span {
+    font-size: clamp(20.4px, calc(24px + 0.12 * (100vw - 390px)), 27.6px); /* fluid */
+  }
+
+  .hero button {
+    padding-top: clamp(13.6px, calc(16px + 0.12 * (100vh - 844px)), 18.4px); /* fluid */
+    padding-right: clamp(34px, calc(40px + 0.12 * (100vw - 390px)), 46px); /* fluid */
+    padding-bottom: clamp(13.6px, calc(16px + 0.12 * (100vh - 844px)), 18.4px); /* fluid */
+    padding-left: clamp(34px, calc(40px + 0.12 * (100vw - 390px)), 46px); /* fluid */
+    font-size: clamp(13.6px, calc(16px + 0.10 * (100vw - 390px)), 18.4px); /* fluid */
   }
 
   .gutter-banner {
-    margin-bottom: 0.5rem !important; /* 🔧 smaller gap below banner */
+    margin-bottom: clamp(6.8px, calc(8px + 0.08 * (100vh - 844px)), 9.2px) !important; /* fluid */ /* 🔧 smaller gap below banner */
   }
 
   /* Optional: if there’s a divider right after the hero */
@@ -611,6 +712,18 @@ nav a.active {
   }
 }
 
+@media (max-width: 768px) {
+  .gutter-banner {
+    /* Lock banner height to stop stretching on taller phones */
+    max-height: 70px;        /* tweak if needed, original 12 Pro look */
+    min-height: 30px;        /* prevents collapse on small phones */
+    height: auto;             /* ensures text wraps correctly */
+
+    /* Keep scaling */
+    transform: scale(0.65) !important;
+    transform-origin: center center;
+  }
+}
 
 
 /* ============================= */
