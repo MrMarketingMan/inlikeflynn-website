@@ -1,123 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>In Like Flynn LLC</title>
-  <link rel="stylesheet" href="./src/css/style.css">
-  <!-- SEO meta updated -->
-  <meta name="description" content="In Like Flynn LLC — your trusted Gettysburg handyman specialists in drywall, painting, siding, and full-service home repair. Free estimates available.">
-  <meta name="keywords" content="handyman, drywall, painting, Gettysburg, home repair, In Like Flynn">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="In Like Flynn LLC — Trusted Handyman & Drywall Specialists">
-  <meta property="og:description" content="Professional, reliable, and affordable home services. Call or text 717-753-1172 for a free estimate.">
-  <meta property="og:image" content="./src/assets/img/logo.png">
-  <meta property="og:url" content="https://www.inlikeflynnllc.com">
-  <link rel="canonical" href="https://www.inlikeflynnllc.com">
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://www.inlikeflynnllc.com/sitemap.xml">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/src/css/style.css" />
+
+  <!-- SEO Meta -->
+  <meta
+    name="description"
+    content="In Like Flynn LLC — your trusted Gettysburg handyman specialists in drywall, painting, siding, and full-service home repair. Free estimates available."
+  />
+  <meta
+    name="keywords"
+    content="handyman, drywall, painting, Gettysburg, home repair, In Like Flynn"
+  />
+  <meta property="og:type" content="website" />
+  <meta
+    property="og:title"
+    content="In Like Flynn LLC — Trusted Handyman & Drywall Specialists"
+  />
+  <meta
+    property="og:description"
+    content="Professional, reliable, and affordable home services. Call or text 717-753-1172 for a free estimate."
+  />
+  <meta property="og:image" content="/logo.png">
+  <meta property="og:image:alt" content="In Like Flynn LLC logo">
+  <link rel="canonical" href="https://www.inlikeflynnllc.com" />
+  <!-- Google Fonts (optimized preload) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&family=Great+Vibes&display=swap"
+    rel="stylesheet"
+  >
+  <link
+    rel="sitemap"
+    type="application/xml"
+    title="Sitemap"
+    href="https://www.inlikeflynnllc.com/sitemap.xml"
+  />
 </head>
+
 <body>
-  <header>
-    <div class="logo">
-      <img src="./src/assets/img/logo.png" alt="In Like Flynn Logo">
-      <h1>In Like Flynn LLC</h1>
+  <!-- ============================= -->
+<!-- DESKTOP HEADER (kept as-is)  -->
+<!-- ============================= -->
+<header class="desktop-header">
+  <div class="logo">
+    <div class="logo-frame">
+      <img src="/src/assets/img/header-logo.png" alt="In Like Flynn Logo" loading="lazy" />
     </div>
-    <div class="free-estimate-banner">
-      Free Estimates!!!! <br> Call or text 717-753-1172
-    </div>
-    <nav aria-label="Primary navigation">
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+    <h1>In Like Flynn LLC</h1>
+  </div>
 
+  <nav aria-label="Primary navigation">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ============================= -->
+<!-- MOBILE HEADER (phones only)  -->
+<!-- ============================= -->
+<header class="mobile-header">
+  <!-- 🔶 Diagonal gold quotes (subtle background accents) -->
+  <div class="corner-quote left">“We’re so glad we found you!”</div>
+  <div class="corner-quote right">“Feels good hiring someone who cares.”</div>
+
+  <div class="header-top">
+    <div class="logo-frame">
+      <img src="/src/assets/img/header-logo.png" alt="In Like Flynn Logo" />
+    </div>
+    <h1>In Like Flynn LLC</h1>
+  </div>
+
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+
+  <!-- Free Estimate Banner -->
+  <div class="free-estimate-banner">
+    <img src="/src/assets/img/estimate-banner.png" alt="Free Estimates - Call or Text 717-753-1172" />
+  </div>
+
+  <!-- ============================= -->
+  <!-- HERO SECTION -->
+  <!-- ============================= -->
   <section class="hero" aria-labelledby="hero-heading">
-    <h2 id="hero-heading">Your Trusted Handyman
-      <span>Drywall Specialists &amp; Full-Service Handyman Work</span>
+    <h2 id="hero-heading">
+      In Like Flynn LLC<br />
+      <span>Drywall Specialists &amp; Construction Services</span>
     </h2>
-    <img src="./src/assets/img/logo.png" alt="In Like Flynn logo badge" class="logo-placeholder">
-    <p>Professional • Reliable • Affordable</p>
-    <button type="button" aria-label="Request a free estimate">Get a Free Estimate</button>
 
-    <!-- Seasonal Gutter Banner -->
+    <img src="/src/assets/img/logo.png" alt="In Like Flynn logo badge" class="logo-placeholder" loading="lazy">
+    <p>Professional • Reliable • Affordable</p>
+
+    <a href="tel:+17177531172" class="call-link-wrapper" aria-label="Call In Like Flynn LLC for a free estimate">
+  <button type="button" aria-label="Request a free estimate">
+    Get a Free Estimate
+  </button>
+</a>
+
+
+    <!-- Gutter Banner -->
     <div
       class="gutter-banner"
+      id="openGutterModal"
       role="button"
+      aria-label="Click to view Fall gutter cleaning special"
       tabindex="0"
-      aria-label="View gutter cleaning fall special"
-      onclick="openPopup()"
-      onkeydown="if (event.key === 'Enter' || event.key === ' ') { openPopup(); }"
     >
       <div class="gutter-price">
         <span class="currency">$</span>99
       </div>
+
       <div class="gutter-text">
         <h3>Gutter Cleaning</h3>
         <p class="subtext">Fall Special • Limited Time</p>
       </div>
 
-      <!-- falling leaves -->
-      <div class="leaves" aria-hidden="true">
-        <span>🍂</span>
-        <span>🍁</span>
-        <span>🍃</span>
-        <span>🍂</span>
-        <span>🍁</span>
-      </div>
+      <img
+        src="/src/assets/img/cursor.png"
+        alt=""
+        class="click-cursor"
+        aria-hidden="true"
+      />
 
-      <!-- pixel cursor -->
-      <img src="./src/assets/img/cursor.png" alt="" class="click-cursor" aria-hidden="true">
+      <div class="leaf-layer" aria-hidden="true"></div>
+    </div>
+  </section>
+
+ <!-- SERVICES SECTION -->
+<section class="services fade-section" id="services" aria-labelledby="services-heading">
+  <h2 id="services-heading">Our Services</h2>
+  <div class="service-grid">
+    <!-- Each service box now has a data-service key -->
+    <div class="service-item" data-service="drywall" tabindex="0" role="button" aria-label="Open drywall gallery">Drywall</div>
+    <div class="service-item" data-service="painting" tabindex="0" role="button" aria-label="Open painting gallery">Painting</div>
+    <div class="service-item" data-service="vinyl-siding" tabindex="0" role="button" aria-label="Open vinyl siding gallery">Vinyl Siding</div>
+    <div class="service-item" data-service="plumbing-electric" tabindex="0" role="button" aria-label="Open plumbing and electric gallery">Plumbing &amp; Electric</div>
+    <div class="service-item" data-service="power-washing" tabindex="0" role="button" aria-label="Open power washing gallery">Power Washing</div>
+    <div class="service-item" data-service="demolition" tabindex="0" role="button" aria-label="Open demolition gallery">Demolition</div>
+    <div class="service-item" data-service="door-window" tabindex="0" role="button" aria-label="Open door and window gallery">Door &amp; Window Installation</div>
+    <div class="service-item" data-service="junk-removal" tabindex="0" role="button" aria-label="Open junk removal gallery">Junk Removal</div>
+    <div class="service-item" data-service="deck-repair" tabindex="0" role="button" aria-label="Open deck repair gallery">Deck Repair</div>
+    <div class="service-item" data-service="trim-flooring" tabindex="0" role="button" aria-label="Open trim and flooring gallery">Trim/Flooring</div>
+    <div class="service-item" data-service="home-install" tabindex="0" role="button" aria-label="Open home install gallery">Home Install</div>
+    <div class="service-item" data-service="framing" tabindex="0" role="button" aria-label="Open framing gallery">Framing</div>
+  </div>
+</section>
+
+
+  <!-- Divider -->
+  <div class="section-divider"></div>
+
+  <!-- ============================= -->
+  <!-- ABOUT US SECTION -->
+  <!-- ============================= -->
+  <section class="about fade-section" id="about">
+    <div class="about-image">
+      <img src="/src/assets/img/ryan-working.webp" alt="Ryan Flynn working on site">
+      <p class="image-caption">Lake Heritage — a dock build and a lucky catch.</p>
     </div>
 
-    <!-- Popup Modal -->
-    <div id="gutter-popup" class="popup-overlay" role="dialog" aria-modal="true" aria-label="Gutter cleaning special details">
-      <div class="popup-content">
-        <span
-          class="close-btn"
-          role="button"
-          tabindex="0"
-          aria-label="Close gutter cleaning offer"
-          onclick="closePopup()"
-          onkeydown="if (event.key === 'Enter' || event.key === ' ') { closePopup(); }"
-        >&times;</span>
-        <h2>Gutter Cleaning Special</h2>
-        <p>This is a placeholder popup. Add more details about your seasonal deal here!</p>
+    <div class="about-content">
+      <h2>Built on Trust, Craftsmanship, and Care</h2>
+
+      <p>
+        In Like Flynn LLC is a locally trusted handyman and construction company
+        built on skill, reliability, and pride in every detail. We handle everything
+        from drywall finishing to custom decks — always with the same goal:
+        top-quality work done right the first time.
+      </p>
+
+      <p>
+        Founded by <strong>Ryan Flynn</strong>, a seasoned craftsman and current
+        <strong>Lead Carpenter & Supervisor at Gettysburg Hospital</strong>, our
+        work is backed by years of experience in contamination control, precision
+        carpentry, and code compliance. That background ensures every project meets
+        the highest standards of safety and professionalism — whether it’s your home,
+        office, or renovation site.
+      </p>
+
+      <p>
+        Our small, dedicated team blends technical expertise with genuine customer care.
+        You’ll always deal directly with people who value honesty, craftsmanship, and
+        leaving every space better than they found it.
+      </p>
+
+      <div class="about-values">
+        <div>
+          <h4>🛠️ Quality Workmanship</h4>
+          <p>Every cut, coat, and corner is done with precision and pride.</p>
+        </div>
+        <div>
+          <h4>🤝 Honest Communication</h4>
+          <p>Clear updates, transparent pricing, and no hidden surprises.</p>
+        </div>
+        <div>
+          <h4>⏰ Reliable Service</h4>
+          <p>We show up on time, finish on schedule, and clean up properly.</p>
+        </div>
+        <div>
+          <h4>🏡 Locally Owned</h4>
+          <p>Proudly serving Gettysburg and surrounding communities.</p>
+        </div>
+      </div>
+
+      <div class="cta">
+       <a href="#contact">Get Your Free Estimate</a>
       </div>
     </div>
   </section>
 
-  <section class="services" id="services" aria-labelledby="services-heading">
-    <h2 id="services-heading">Our Services</h2>
-    <div class="service-grid">
-      <div class="service-item">Drywall</div>
-      <div class="service-item">Painting</div>
-      <div class="service-item">Vinyl Siding</div>
-      <div class="service-item">Landscaping &amp; Garden Care</div>
-      <div class="service-item">Power Washing</div>
-      <div class="service-item">Demolition</div>
-      <div class="service-item">Door &amp; Window Installation</div>
-      <div class="service-item">Junk Removal</div>
-      <div class="service-item">Deck Repair</div>
-      <div class="service-item">Trim/Flooring</div>
-      <div class="service-item">Home Install</div>
-      <div class="service-item">Framing</div>
-    </div>
-  </section>
-
-  <section class="cta" id="contact" aria-labelledby="cta-heading">
-    <h2 id="cta-heading">Ready to Start Your Pooject?</h2>
-    <p>Call or text us today at
-      <a href="tel:717-753-1172" aria-label="Call In Like Flynn LLC at 717-753-1172">717-753-1172</a>
+  <!-- ============================= -->
+  <!-- CTA SECTION -->
+  <!-- ============================= -->
+  <section class="cta fade-section" id="contact" aria-labelledby="cta-heading">
+    <h2 id="cta-heading">Ready to Start Your Project?</h2>
+    <p>
+      Call or text us today at
+      <a
+        href="tel:717-753-1172"
+        class="cta-call"
+        aria-label="Call In Like Flynn LLC at 717-753-1172"
+      >717-753-1172</a>
     </p>
   </section>
 
-  <!-- Footer added -->
-  <footer id="about">
+  <!-- ============================= -->
+  <!-- FOOTER -->
+  <!-- ============================= -->
+  <footer class="fade-section" id="footer">
     © 2025 In Like Flynn LLC. All rights reserved.
   </footer>
 
-  <!-- Scripts -->
-  <script src="./src/js/main.js"></script>
+  <!-- ============================= -->
+  <!-- GUTTER CLEANING MODAL -->
+  <!-- ============================= -->
+  <div id="modal-root">
+    <div class="modal-overlay" id="gutterModal" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="gutterModalTitle">
+        <button class="modal-close" id="closeModal" aria-label="Close modal">&times;</button>
+        <h2 class="modal-title" id="gutterModalTitle">🍂 Fall Gutter Cleaning Special</h2>
+        <div class="modal-content">
+          <p><strong>$99</strong> – 1 Story</p>
+          <p><strong>$130</strong> – 2 Story</p>
+          <p><strong>$180</strong> – 3 Story</p>
+          <hr />
+          <h3>Bonus: Add Gutter Guard</h3>
+          <ul>
+            <li><strong>Basic Mesh</strong> – $5 per sq. ft.</li>
+            <li><strong>Aluminum Snap-In</strong> – $9 per sq. ft.</li>
+            <li><strong>Stainless-Steel Micro Mesh</strong> – $13 per sq. ft.</li>
+          </ul>
+          <p class="discount"><em>10% off install if cleaning is included.</em></p>
+          <blockquote class="quote">
+            “Protect your gutters for good — with our premium guards, you’ll stay clog-free season after season.”
+          </blockquote>
+          <button class="cta-btn" type="button">Contact Us</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- ============================= -->
+<!-- SERVICE GALLERY MODAL (updated simple version) -->
+<!-- ============================= -->
+<div class="svc-modal-overlay" id="svcGalleryOverlay" aria-hidden="true">
+  <div class="svc-modal" role="dialog" aria-modal="true" aria-labelledby="svcGalleryTitle">
+    <button class="svc-close" id="svcCloseBtn" aria-label="Close gallery">&times;</button>
+
+    <!-- Dynamic title -->
+    <h2 class="svc-title" id="svcGalleryTitle">Gallery</h2>
+
+    <!-- Grid container populated by JS -->
+    <div class="svc-grid" id="svcGrid">
+      <p class="svc-coming-soon">Pictures coming soon</p>
+    </div>
+  </div>
+
+  <!-- Lightbox for expanded image -->
+  <div class="svc-lightbox" id="svcLightbox" aria-hidden="true">
+    <button class="svc-lightbox-close" id="svcLightboxClose" aria-label="Close image">&times;</button>
+    <img id="svcLightboxImg" alt="Expanded project image" />
+    <div class="svc-lightbox-caption" id="svcLightboxCaption"></div>
+    <button class="svc-nav svc-prev" id="svcPrev" aria-label="Previous image">&#10094;</button>
+    <button class="svc-nav svc-next" id="svcNext" aria-label="Next image">&#10095;</button>
+  </div>
+</div>
+
+
+  <!-- ============================= -->
+  <!-- SCRIPTS -->
+  <!-- ============================= -->
+  <script type="module" src="/src/js/main.js"></script>
+  <script type="module" src="/src/js/animations/service-gallery.js"></script>
 </body>
 </html>

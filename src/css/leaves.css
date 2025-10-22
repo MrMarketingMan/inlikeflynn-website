@@ -1,0 +1,44 @@
+/* ============================= */
+/* Falling Leaf Animation */
+/* ============================= */
+
+.leaf-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 20; /* below cursor but above banner background */
+}
+
+.leaf {
+  position: absolute;
+  font-size: 1.2rem;
+  opacity: 0;
+  animation: fall linear forwards;
+}
+
+/* Slight horizontal drift + rotation for realism */
+@keyframes fall {
+  0% {
+    transform: translateY(-20%) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(50%) translateX(10px) rotate(180deg);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(75%) translateX(-10px) rotate(270deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%) translateX(0) rotate(360deg);
+    opacity: 0;
+  }
+}
