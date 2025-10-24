@@ -1,16 +1,16 @@
 /* =======================================================
-   SERVICE GALLERY — AUTO-UPDATE (Production-Safe for Vite + Netlify)
+   SERVICE GALLERY — Auto-Update (Production-Safe for Vite + Netlify)
+   — Refactored for accessibility & event safety —
 ========================================================= */
 
-// Gate setup: only run this file if the gallery markup exists on the page
 const svcOverlay = document.getElementById("svcGalleryOverlay");
 if (!svcOverlay) {
   console.info("Service gallery markup not found — skipping gallery script.");
 } else {
+  /* ---------- Element references ---------- */
   const svcGrid = document.getElementById("svcGrid");
   const svcClose = document.getElementById("svcCloseBtn");
   const svcTitle = document.getElementById("svcGalleryTitle");
-
   const svcLightbox = document.getElementById("svcLightbox");
   const svcLightboxImg = document.getElementById("svcLightboxImg");
   const svcLightboxCaption = document.getElementById("svcLightboxCaption");
@@ -18,49 +18,37 @@ if (!svcOverlay) {
   const svcPrev = document.getElementById("svcPrev");
   const svcNext = document.getElementById("svcNext");
 
-  /* -------------------------------------------------------
-     🔧 AUTO-IMPORT ALL SERVICE IMAGES (use resolved URLs)
-  --------------------------------------------------------- */
+  /* ---------- Auto-import all service images ---------- */
+  const allImages = import.meta.glob(
+    "/src/assets/img/services/*/*.{jpg,jpeg,png,webp}",
+    { eager: true }
+  );
 
-  // Grab all jpg/jpeg/png/webp files inside /services subfolders
-  const allImages = import.meta.glob("/src/assets/img/services/*/*.{jpg,jpeg,png,webp}", {
-    eager: true,
-  });
-
-  // Build the serviceGalleries object dynamically
   const serviceGalleries = {};
-
   for (const path in allImages) {
-    // Extract the folder name (service)
     const match = path.match(/services[\\/](.+?)[\\/]/);
     if (!match) continue;
     const service = match[1];
-
     if (!serviceGalleries[service]) serviceGalleries[service] = [];
 
-    // ✅ Use the resolved, Vite-hashed URL
     const imgUrl = allImages[path].default || allImages[path];
-
-    serviceGalleries[service].push({
-      src: imgUrl,
-      caption: "",
-    });
+    serviceGalleries[service].push({ src: imgUrl, caption: "" });
   }
 
-  // Sort images alphabetically for consistency
+  // Sort for predictable order
   for (const key in serviceGalleries) {
     serviceGalleries[key].sort((a, b) => a.src.localeCompare(b.src));
   }
 
-  /* -------------------------------------------------------
-     🔧 MODAL / LIGHTBOX LOGIC
-  --------------------------------------------------------- */
+  /* ---------- Modal / Lightbox logic ---------- */
   let currentService = null;
   let currentIndex = 0;
 
   function openServiceModal(serviceKey) {
     currentService = serviceKey;
-    const formattedName = serviceKey.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+    const formattedName = serviceKey
+      .replace(/-/g, " ")
+      .replace(/\b\w/g, (c) => c.toUpperCase());
     svcTitle.textContent = `${formattedName} Gallery`;
     svcGrid.innerHTML = "";
 
@@ -71,14 +59,11 @@ if (!svcOverlay) {
       images.forEach((img, i) => {
         const cell = document.createElement("div");
         cell.className = "svc-cell";
-
         const image = document.createElement("img");
         image.src = img.src;
         image.alt = `${formattedName} image ${i + 1}`;
         image.dataset.index = i;
-
         image.addEventListener("click", () => openLightbox(i));
-
         cell.appendChild(image);
         svcGrid.appendChild(cell);
       });
@@ -116,9 +101,7 @@ if (!svcOverlay) {
     svcLightboxCaption.textContent = caption || "";
   }
 
-  /* -------------------------------------------------------
-     🔧 EVENT LISTENERS (with guards)
-  --------------------------------------------------------- */
+  /* ---------- Event listeners (with modern a11y) ---------- */
   svcClose?.addEventListener("click", closeServiceModal);
   svcOverlay?.addEventListener("click", (e) => {
     if (e.target === svcOverlay) closeServiceModal();
@@ -131,16 +114,18 @@ if (!svcOverlay) {
     if (e.target === svcLightbox) closeLightbox();
   });
 
-  // Attach click handlers to service boxes if they exist
+  // Keyboard-accessible activation
   const serviceBoxes = document.querySelectorAll(".service-item");
   serviceBoxes.forEach((box) => {
     box.addEventListener("click", () => openServiceModal(box.dataset.service));
-    box.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") openServiceModal(box.dataset.service);
+    box.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openServiceModal(box.dataset.service);
+      }
     });
   });
 
-  // Log in dev mode to confirm auto-load worked
   if (import.meta.env.DEV) {
     console.log("✅ Loaded service galleries:", serviceGalleries);
   }

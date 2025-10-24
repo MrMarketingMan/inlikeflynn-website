@@ -933,24 +933,7 @@ nav a.active {
   font-size: 1.1rem;
 }
 
-.cta {
-  margin-top: 2.5rem;
-}
 
-.cta a {
-  text-decoration: none;
-  color: white;
-  background: var(--green);
-  padding: 0.9rem 1.3rem;
-  border-radius: 0.5rem;
-  font-weight: bold;
-  letter-spacing: 0.5px;
-  transition: background 0.2s ease;
-}
-
-.cta a:hover {
-  background: #1d3f22;
-}
 
 @media (max-width: 800px) {
   .about {

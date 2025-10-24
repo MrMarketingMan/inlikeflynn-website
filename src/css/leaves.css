@@ -2,43 +2,34 @@
 /* Falling Leaf Animation */
 /* ============================= */
 
+/* The container for all falling leaves */
 .leaf-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 20; /* below cursor but above banner background */
+  position: absolute;          /* Positions it relative to the nearest positioned ancestor (e.g. banner) */
+  top: 0;                      /* Anchors the top edge to the top of its parent */
+  left: 0;                     /* Anchors the left edge to the left of its parent */
+  width: 100%;                 /* Stretches the layer across the full width of the parent */
+  height: 100%;                /* Stretches the layer across the full height of the parent */
+  overflow: hidden;            /* Hides leaves once they move outside the layer boundaries */
+  pointer-events: none;        /* Prevents the leaves from blocking clicks on elements underneath */
+  z-index: 20;                 /* Places this layer above the banner background but below other UI elements */
 }
 
+/* Each individual leaf element */
 .leaf {
-  position: absolute;
-  font-size: 1.2rem;
-  opacity: 0;
-  animation: fall linear forwards;
+  position: absolute;          /* Allows each leaf to move independently within the layer */
+  font-size: 1.2rem;           /* Sets the size of the leaf (works for emoji or text-based leaves) */
+  opacity: 0;                  /* Starts invisible before animation begins */
+  animation: fall linear forwards; /* Triggers the “fall” animation, plays at a constant speed, and stays at its final state */
 }
 
-/* Slight horizontal drift + rotation for realism */
+/* ============================= */
+/* Keyframes for the leaf falling motion */
+/* ============================= */
+
 @keyframes fall {
-  0% {
-    transform: translateY(-20%) translateX(0) rotate(0deg);
-    opacity: 0;
-  }
-  15% {
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(50%) translateX(10px) rotate(180deg);
-    opacity: 1;
-  }
-  75% {
-    transform: translateY(75%) translateX(-10px) rotate(270deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100%) translateX(0) rotate(360deg);
-    opacity: 0;
-  }
+  0%   { transform: translateY(-20%) translateX(0) rotate(0deg); }
+  25%  { transform: translateY(50%)  translateX(15px) rotate(180deg); }
+  50%  { transform: translateY(100%) translateX(-10px) rotate(270deg); }
+  75%  { transform: translateY(150%) translateX(10px) rotate(330deg); }
+  100% { transform: translateY(220%) translateX(0) rotate(360deg); }
 }

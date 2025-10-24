@@ -1,53 +1,75 @@
 // =============================
-// Falling Leaves Animation
-// In Like Flynn LLC
+// Falling Leaves Animation (Synced Fade + Random Speed)
 // =============================
 
-// Select the leaf layer inside the gutter banner
-const leafLayer = document.querySelector('.leaf-layer');
+const leafLayer = document.querySelector(".leaf-layer");
 
 if (leafLayer) {
-  // Different leaf types for visual variety
-  const leaves = ['🍁', '🍂', '🍃'];
+  // Emoji options for leaf styles
+  const leaves = ["🍁", "🍂", "🍃"];
 
-  // Function to spawn a single leaf
+  /**
+   * Spawns a single falling leaf with random size, position, and motion.
+   */
   function spawnLeaf() {
-    const leaf = document.createElement('span');
-    leaf.classList.add('leaf');
+    if (!leafLayer.isConnected) return; // stop if layer removed
+
+    // Create a new leaf element
+    const leaf = document.createElement("span");
+    leaf.classList.add("leaf");
     leaf.textContent = leaves[Math.floor(Math.random() * leaves.length)];
 
-    // Randomize size slightly for realism
-    const size = Math.random() * 1.1 + 0.8; // 0.8–1.9rem
+    // --- Randomized visual and motion settings ---
+    const size = Math.random() * 1.1 + 0.8;           // 0.8–1.9rem
+    const startLeft = Math.random() * 100;            // random horizontal start (%)
+    const drift = Math.random() * 40 - 20;            // side offset -20 to +20px
+    const duration = Math.random() * 4 + 6;           // 6–10s fall duration
+    const delay = Math.random() * 2;                  // 0–2s random start delay
+
+    // Apply basic styles
     leaf.style.fontSize = `${size}rem`;
+    leaf.style.left = `${startLeft}%`;
 
-    // Random horizontal position (0–100%)
-    leaf.style.left = `${Math.random() * 100}%`;
-
-    // Slight random tilt and drift direction
-    const drift = Math.random() * 40 - 20; // -20px to +20px
-    const spin = Math.random() > 0.5 ? 360 : -360; // random rotation direction
-
-    // Animation timing
-    const duration = Math.random() * 3 + 5; // 5–8s fall duration
-    const delay = Math.random() * 2; // 0–2s delay before fall
-
-    // Apply inline animation timing
-    leaf.style.animationDuration = `${duration}s`;
+    // Assign fall animation (CSS handles vertical + rotation)
+    leaf.style.animation = `fall ${duration}s ease-in-out forwards`;
     leaf.style.animationDelay = `${delay}s`;
 
-    // Random starting horizontal offset
+    // Give each leaf a slightly different tilt
     leaf.style.transform = `translateX(${drift}px) rotate(${Math.random() * 45 - 22}deg)`;
 
-    // Add to the layer
+    // Add to DOM
     leafLayer.appendChild(leaf);
 
-    // Animate via CSS keyframes (already defined in leaves.css)
-    // The inline transform adds realism while the keyframes control the fall path
+    // --- Opacity animation (JS-based, synced to duration) ---
+    leaf.animate(
+      [
+        { opacity: 0 },            // start invisible
+        { opacity: 1, offset: 0.15 }, // fade in early
+        { opacity: 1, offset: 0.85 }, // stay visible most of the time
+        { opacity: 0 }             // fade out near the end
+      ],
+      {
+        duration: (duration + delay) * 1000, // scale fade timing to leaf duration
+        easing: "ease-in-out",
+        fill: "forwards"
+      }
+    );
 
-    // Clean up after animation completes
+    // --- Cleanup ---
+    // Remove the leaf after its animation fully completes
     setTimeout(() => leaf.remove(), (duration + delay) * 1000);
   }
 
-  // Spawn a new leaf every ~1.4 seconds for a natural rhythm
-  setInterval(spawnLeaf, 1400);
+  // --- Continuous spawning loop ---
+  // Spawns a new leaf every 1.4s for a steady flow
+  const leafInterval = setInterval(() => {
+    // Stop interval if layer removed from DOM
+    if (!document.body.contains(leafLayer)) {
+      clearInterval(leafInterval);
+      return;
+    }
+    spawnLeaf();
+  }, 1400);
+} else {
+  console.info("Leaf layer not found — skipping falling leaves animation.");
 }
