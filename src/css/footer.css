@@ -1,0 +1,192 @@
+/* ============================= */
+/* Footer & Contact / About */
+/* ============================= */
+footer {
+  background-color: var(--charcoal);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  font-family: 'Montserrat', sans-serif;
+  border-top: 2px solid var(--gold);
+}
+
+/* ============================= */
+/* CTA Section (contact area) */
+/* ============================= */
+.cta {
+  background-color: var(--bold-green);
+  color: white;
+  text-align: center;
+  padding: 3rem 2rem;
+  border-top: 3px solid var(--silver);
+}
+
+/* Deep gold gradient & soft glow for footer heading */
+.cta h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  /* darker, richer golds — antique brass tone */
+  background: linear-gradient(
+    135deg,
+    #8b6b2e 0%,
+    #b08d57 25%,
+    #c5a66b 50%,
+    #b08d57 75%,
+    #7a5c23 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* soft radiant glow */
+  text-shadow:
+    0 0 6px rgba(176, 141, 87, 0.25),
+    0 0 12px rgba(192, 160, 95, 0.15),
+    0 0 20px rgba(140, 100, 40, 0.1);
+
+  /* gentle slow shimmer for life */
+  animation: goldFlow 10s ease-in-out infinite alternate;
+}
+
+
+.cta button {
+  background-color: var(--gold);
+  border: 2px solid var(--silver);
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 0 10px var(--silver);
+}
+
+/* ============================= */
+/* About Us Section */
+/* (kept here to avoid adding more partials) */
+/* ============================= */
+.about {
+  max-width: 1100px;
+  margin: 5rem auto;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.about-image {
+  flex: 1 1 45%;
+  text-align: center;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 480px;
+  display: block; /* removes any default inline spacing or baseline gap */
+  border-radius: 1rem;
+  box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.40); /* softened shadow */
+  margin: 0 auto;
+  border: none; /* ensures no stray border is drawn */
+}
+.about-image .image-caption {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.about-content {
+  flex: 1 1 50%;
+}
+
+.about-content h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.4rem;
+  color: var(--charcoal);
+  margin-bottom: 1rem;
+  border-left: 5px solid var(--gold);
+  padding-left: 1rem;
+}
+
+.about-content p {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.about-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.about-values div {
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-left: 4px solid var(--gold);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform, box-shadow;
+}
+
+.about-values div:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.about-values h4 {
+  margin: 0.25rem 0;
+  font-family: 'Oswald', sans-serif;
+  color: var(--charcoal);
+  font-size: 1.1rem;
+}
+
+
+@media (max-width: 800px) {
+  .about {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-content h2 {
+    border-left: none;
+    border-top: 3px solid var(--gold);
+    padding-top: 0.5rem;
+  }
+}
+
+/* ============================= */
+/* CTA Phone Link — Seamless Inline Style */
+/* ============================= */
+.cta-call {
+  color: #ffffff;                 /* white text to match surrounding text */
+  font-family: inherit;           /* inherit the section font */
+  font-size: inherit;             /* exact same size as paragraph text */
+  font-weight: inherit;           /* same weight as the rest of the sentence */
+  text-decoration: none;          /* remove default blue underline */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.75); /* elegant white underline */
+  padding-bottom: 2px;            /* slight spacing for better balance */
+  transition: border-color 0.3s ease, text-shadow 0.3s ease;
+
+  /* Subtle soft-blue glow for depth */
+  text-shadow:
+    0 0 4px rgba(80, 160, 255, 0.25),
+    0 0 6px rgba(80, 160, 255, 0.15);
+}
+
+.cta-call:hover {
+  color: #eaf4ff;                 /* slight tint shift for hover */
+  border-bottom-color: rgba(160, 210, 255, 0.9); /* lighter blue-white underline */
+  text-shadow:
+    0 0 6px rgba(120, 190, 255, 0.45),
+    0 0 12px rgba(120, 190, 255, 0.35);
+}

@@ -1,0 +1,330 @@
+/* ============================= */
+/* Header */
+/* ============================= */
+header {
+  background-color: var(--darkgreen);
+  color: white;
+  padding: 1rem 2rem 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid var(--gold);
+  position: relative;
+  z-index: 5;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+}
+
+/* Outer circular frame — stays fixed */
+/* Outer circular frame — now acts as a positioning wrapper only */
+header .logo-frame {
+  position: relative;             /* lets the image position inside */
+  height: 60px;
+  width: 60px;
+  border: none;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 1rem;
+  flex-shrink: 0;
+  display: block;
+  background: none;               /* no visible background */
+}
+
+/* Logo image fills and covers frame completely */
+header .logo-frame img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.55);          /* fine-tune: increase/decrease slightly to fill ring */
+  transform-origin: center;
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+  line-height: 0;
+  z-index: 5;                      /* sits above any frame artifacts */
+  image-rendering: -webkit-optimize-contrast;
+}
+
+
+/* Header title — seamless metallic shimmer (continuous left → right) */
+header h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.9rem;
+  margin: 0;
+  letter-spacing: 1px;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  /* Polished silver gradient with highlight band */
+  background: linear-gradient(
+    115deg,
+    #9e9e9e 0%,
+    #d9d9d9 20%,
+    #ffffff 50%,   /* strong highlight */
+    #d0d0d0 60%,
+    #a8a8a8 80%,
+    #9e9e9e 100%
+  );
+  background-size: 300% 100%;      /* allows continuous horizontal scroll */
+  background-repeat: repeat;       /* ensures seamless looping */
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+
+  /* Subtle metallic glow */
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.25),
+               0 0 12px rgba(255, 255, 255, 0.1);
+
+  /* ✨ Continuous shimmer animation */
+  animation: shimmerScroll 8s linear infinite;
+}
+
+
+/* Metallic silver shimmer on nav links */
+nav a {
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  margin-left: 1.5rem;
+  text-decoration: none;
+  background: linear-gradient(
+    115deg,
+    #9e9e9e 0%,
+    #d9d9d9 20%,
+    #ffffff 50%,  /* strong highlight */
+    #d0d0d0 60%,
+    #a8a8a8 80%,
+    #9e9e9e 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.15),
+               0 0 10px rgba(255, 255, 255, 0.05);
+  animation: shimmerScroll 8s linear infinite;
+  transition: transform 0.2s ease, text-shadow 0.3s ease;
+}
+
+/* Small hover effect — makes text feel reactive and glossy */
+nav a:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 12px rgba(255,255,255,0.35);
+}
+
+/* Optional active link pulse (for current page highlight) */
+nav a.active {
+  text-shadow: 0 0 12px rgba(255,255,255,0.5),
+               0 0 20px rgba(255,255,255,0.3);
+}
+
+/* =========================================
+   Responsive Header Switch — Desktop vs Mobile
+   ========================================= */
+
+/* Default: show desktop header, hide mobile header */
+.desktop-header { display: flex; }      /* your current desktop header */
+.mobile-header  { display: none; }      /* hidden until mobile breakpoint */
+
+/* On screens 768px and below: show mobile header, hide desktop one */
+@media (max-width: 768px) {
+  .desktop-header { display: none !important; }
+  .mobile-header  { display: block !important; }
+}
+
+/* =========================================
+   Mobile Header Layout (new)
+   ========================================= */
+.mobile-header {
+  background-color: #2F5233;         /* dark green base */
+  border-bottom: 3px solid #B08D57;  /* gold accent divider */
+  padding-top: clamp(10.88px, calc(12.8px + 0.12 * (100vh - 844px)), 14.72px); /* fluid */
+  padding-right: clamp(13.6px, calc(16px + 0.10 * (100vw - 390px)), 18.4px); /* fluid */
+  padding-bottom: clamp(13.6px, calc(16px + 0.12 * (100vh - 844px)), 18.4px); /* fluid */
+  padding-left: clamp(13.6px, calc(16px + 0.10 * (100vw - 390px)), 18.4px); /* fluid */
+  text-align: center;
+  color: white;
+  position: relative;
+  z-index: 10;
+  overflow: visible;                  /* allows angled quotes to show fully */
+}
+
+/* Stack logo/title nicely */
+.mobile-header .header-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(5.44px, calc(6.4px + 0.08 * (100vw - 390px)), 7.36px); /* fluid */
+  position: relative;
+  z-index: 5;                         /* above quotes */
+}
+
+/* 🔧 Logo: no-outline, perfect circle, mobile-only */
+.mobile-header .logo-frame {
+  width: clamp(51px, calc(60px + 0.08 * (100vw - 390px)), 69px); /* fluid */                        /* 🔧 logo size */
+  height: clamp(51px, calc(60px + 0.08 * (100vw - 390px)), 69px); /* fluid */
+  border-radius: 50%;
+  overflow: hidden;                   /* clip cleanly */
+  background: transparent;            /* remove halo */
+  border: none; box-shadow: none;
+  display: flex; align-items: center; justify-content: center;
+}
+.mobile-header .logo-frame img {
+  width: 100%; height: 100%;
+  object-fit: cover;                  /* fills circle fully */
+  transform: scale(1.5);              /* 🔧 zoom to hide any transparent edge */
+  image-rendering: -webkit-optimize-contrast;
+  border: none; background: transparent; margin: 0; padding: 0; display: block;
+}
+
+/* Title: silver shimmer */
+.mobile-header h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(17.68px, calc(20.8px + 0.12 * (100vw - 390px)), 23.92px); /* fluid */                  /* 🔧 title size */
+  margin: 0;
+  letter-spacing: 1px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: linear-gradient(115deg, #9e9e9e, #d9d9d9, #ffffff, #d0d0d0, #a8a8a8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerScroll 8s linear infinite;
+}
+
+/* Nav: silver shimmer, compact spacing */
+.mobile-header nav {
+  margin-top: clamp(8.16px, calc(9.6px + 0.10 * (100vh - 844px)), 11.04px); /* fluid */
+  display: flex;
+  justify-content: center;
+  gap: clamp(19.04px, calc(22.4px + 0.10 * (100vw - 390px)), 25.76px); /* fluid */                        /* 🔧 spacing between links */
+}
+.mobile-header nav a {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: clamp(12.24px, calc(14.4px + 0.10 * (100vw - 390px)), 16.56px); /* fluid */                  /* 🔧 nav text size */
+  background: linear-gradient(115deg, #9e9e9e 0%, #d9d99d 20%, #ffffff 50%, #d0d0d0 60%, #a8a8a8 80%, #9e9e9e 100%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerScroll 8s linear infinite;
+  transition: transform 0.2s ease, text-shadow 0.3s ease;
+}
+.mobile-header nav a:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px rgba(255,255,255,0.35);
+}
+
+/* =========================================
+   Angled Gold Quotes — tweak-friendly
+   ========================================= */
+.mobile-header .corner-quote {
+  position: absolute;                 /* anchored within header */
+  font-family: 'Playfair Display', serif; /* elegant serif */
+  font-style: italic; font-weight: 600;
+  font-size: clamp(14.28px, calc(16.8px + 0.10 * (100vw - 390px)), 19.32px); /* fluid */                 /* 🔧 quote font size */
+  line-height: 1.3; letter-spacing: 0.2px;
+  pointer-events: none;               /* doesn't block clicks */
+  z-index: 1;                         /* behind logo/title */
+  width: clamp(212.5px, calc(250px + 0.20 * (100vw - 390px)), 287.5px); /* fluid */                       /* 🔧 text box width */
+
+  /* 🔧 OPACITY — 0.35 subtle → 0.65 stronger */
+  opacity: 0.50;
+
+  /* 🔧 GOLD tone (dark wheat/antique) */
+  color: transparent;
+  background: linear-gradient(120deg, #c8a86d, #b08d57, #d4b97b, #a8823f);
+  -webkit-background-clip: text; background-clip: text;
+
+  /* 🔧 Depth/glow */
+  text-shadow:
+    0 0 6px rgba(0,0,0,0.25),
+    0 0 8px rgba(240,220,150,0.15);
+
+  /* 🔧 Shine — comment out to disable */
+  animation: goldShimmer 14s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+/* 🔧 Left quote position/rotation */
+.mobile-header .corner-quote.left  {
+  top: clamp(32.3px, calc(38px + 0.12 * (100vh - 844px)), 43.7px); /* fluid */
+  left: clamp(6.8px, calc(8px + 0.08 * (100vw - 390px)), 9.2px); /* fluid */
+  transform: rotate(-22deg);
+  text-align: left;
+}
+/* 🔧 Right quote position/rotation */
+.mobile-header .corner-quote.right {
+  top: clamp(37.4px, calc(44px + 0.12 * (100vh - 844px)), 50.6px); /* fluid */
+  right: clamp(10.2px, calc(12px + 0.08 * (100vw - 390px)), 13.8px); /* fluid */
+  transform: rotate(15deg);
+  text-align: right;
+}
+
+/* Shimmer + gold shimmer are defined in animations.css */
+
+/* =========================================
+   Extra-small phones (fine-tune)
+   ========================================= */
+@media (max-width: 480px) {
+  .mobile-header .logo-frame {
+    width: clamp(38.25px, calc(45px + 0.08 * (100vw - 390px)), 51.75px); /* fluid */  /* shrink logo slightly */
+    height: clamp(38.25px, calc(45px + 0.08 * (100vw - 390px)), 51.75px); /* fluid */
+  }
+  .mobile-header h1 {
+    font-size: clamp(15.64px, calc(18.4px + 0.10 * (100vw - 390px)), 21.16px); /* fluid */         /* scale title down */
+  }
+  .mobile-header nav a {
+    font-size: clamp(11.56px, calc(13.6px + 0.10 * (100vw - 390px)), 15.64px); /* fluid */         /* smaller nav text */
+  }
+
+  .mobile-header .corner-quote.corner-quote.right {
+    font-size: clamp(12.24px, calc(14.4px + 0.10 * (100vw - 390px)), 16.56px); /* fluid */
+    opacity: 0.70;
+  }
+
+  /* 🔧 micro-positions so both quotes stay fully in view */
+  .mobile-header .corner-quote.right {
+    top: clamp(20.4px, calc(24px + 0.12 * (100vh - 844px)), 27.6px); /* fluid */
+    right: clamp(10.2px, calc(12px + 0.08 * (100vw - 390px)), 13.8px); /* fluid */
+    width: clamp(119px, calc(140px + 0.15 * (100vw - 390px)), 161px); /* fluid */
+  }
+}
+
+/* Duplicate extra-small block for left quote (preserve original tuning) */
+@media (max-width: 480px) {
+  .mobile-header .logo-frame {
+    width: clamp(38.25px, calc(45px + 0.08 * (100vw - 390px)), 51.75px); /* fluid */  /* shrink logo slightly */
+    height: clamp(38.25px, calc(45px + 0.08 * (100vw - 390px)), 51.75px); /* fluid */
+  }
+  .mobile-header h1 {
+    font-size: clamp(15.64px, calc(18.4px + 0.10 * (100vw - 390px)), 21.16px); /* fluid */         /* scale title down */
+  }
+  .mobile-header nav a {
+    font-size: clamp(11.56px, calc(13.6px + 0.10 * (100vw - 390px)), 15.64px); /* fluid */         /* smaller nav text */
+  }
+
+  .mobile-header .corner-quote.corner-quote.left {
+    font-size: clamp(10.88px, calc(12.8px + 0.10 * (100vw - 390px)), 14.72px); /* fluid */
+    opacity: 0.70;
+  }
+
+  /* 🔧 micro-positions so both quotes stay fully in view */
+  .mobile-header .corner-quote.left  {
+    top: clamp(23.8px, calc(28px + 0.12 * (100vh - 844px)), 32.2px); /* fluid */
+    left: clamp(0.85px, calc(1px + 0.02 * (100vw - 390px)), 1.15px); /* fluid */
+  }
+}

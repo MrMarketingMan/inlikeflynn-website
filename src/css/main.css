@@ -1,0 +1,8 @@
+@import './base.css';
+@import './header.css';
+@import './hero.css';
+@import './services.css';
+@import './animations.css';
+@import './footer.css';
+
+/* main.css is the single entrypoint that imports partials above */
