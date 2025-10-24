@@ -328,6 +328,7 @@ nav a.active {
     left: clamp(0.85px, calc(1px + 0.02 * (100vw - 390px)), 1.15px); /* fluid */
   }
 }
+
 /* ============================= */
 /* Free Estimate Banner (Fixed Position) */
 /* ============================= */
@@ -358,6 +359,18 @@ nav a.active {
   .free-estimate-banner {
     top: 70px;
     max-width: 260px;
+  }
+}
+
+
+/* =========================================
+   Mobile Positioning — Estimate Banner
+   ========================================= */
+@media (max-width: 768px) {
+  .free-estimate-banner {
+    top: clamp(93.5px, calc(110px + 0.18 * (100vh - 844px)), 126.5px); /* fluid */ /* 🔧 move lower on phones — increase or decrease as needed */
+    left: clamp(-40.25px, calc(-35px + 0.12 * (100vw - 390px)), -29.75px); /* fluid */
+    max-width: clamp(221px, calc(260px + 0.20 * (100vw - 390px)), 299px); /* fluid */ /* optional: slightly smaller banner for narrow viewports */
   }
 }
 
