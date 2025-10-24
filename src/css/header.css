@@ -207,7 +207,9 @@ nav a.active {
   text-transform: uppercase;
   background: linear-gradient(115deg, #9e9e9e, #d9d9d9, #ffffff, #d0d0d0, #a8a8a8);
   -webkit-background-clip: text;
+  background-clip: text;          /* standard version */
   -webkit-text-fill-color: transparent;
+  color: transparent;             /* standard fallback */
   animation: shimmerScroll 8s linear infinite;
 }
 
@@ -235,7 +237,9 @@ nav a.active {
   background: linear-gradient(115deg, #9e9e9e 0%, #d9d9d9 20%, #ffffff 50%, #d0d0d0 60%, #a8a8a8 80%, #9e9e9e 100%);
   background-size: 300% 100%;
   -webkit-background-clip: text;
+  background-clip: text;          /* standard version */
   -webkit-text-fill-color: transparent;
+  color: transparent;             /* standard fallback */
   animation: shimmerScroll 8s linear infinite;
   transition: transform 0.2s ease, text-shadow 0.3s ease;
 }
