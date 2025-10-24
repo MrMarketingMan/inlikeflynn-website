@@ -63,6 +63,9 @@ header h1 {
   font-weight: 700;
   text-transform: uppercase;
 
+  /* Fallback color for non-supporting browsers */
+  color: #d9d9d9; /* fallback visible text */
+
   /* Polished silver gradient with highlight band */
   background: linear-gradient(
     115deg,
@@ -99,6 +102,10 @@ nav a {
   text-transform: uppercase;
   margin-left: 1.5rem;
   text-decoration: none;
+
+  /* Fallback color for non-supporting browsers */
+  color: #d9d9d9; /* fallback visible text */
+
   background: linear-gradient(
     115deg,
     #9e9e9e 0%,
@@ -210,6 +217,9 @@ nav a.active {
   display: flex;
   justify-content: center;
   gap: clamp(19.04px, calc(22.4px + 0.10 * (100vw - 390px)), 25.76px); /* fluid */                        /* 🔧 spacing between links */
+
+  /* Reset global nav margin so mobile links center properly */
+  margin-left: 0; /* reset global margin for proper centering */
 }
 .mobile-header nav a {
   font-family: 'Oswald', sans-serif;
@@ -217,7 +227,12 @@ nav a.active {
   text-decoration: none;
   font-weight: 700;
   font-size: clamp(12.24px, calc(14.4px + 0.10 * (100vw - 390px)), 16.56px); /* fluid */                  /* 🔧 nav text size */
-  background: linear-gradient(115deg, #9e9e9e 0%, #d9d99d 20%, #ffffff 50%, #d0d0d0 60%, #a8a8a8 80%, #9e9e9e 100%);
+
+  /* Fallback color for non-supporting browsers */
+  color: #d9d9d9; /* fallback visible text */
+
+  /* fixed gradient typo here (#d9d99d → #d9d9d9) */
+  background: linear-gradient(115deg, #9e9e9e 0%, #d9d9d9 20%, #ffffff 50%, #d0d0d0 60%, #a8a8a8 80%, #9e9e9e 100%);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -277,53 +292,35 @@ nav a.active {
 /* Shimmer + gold shimmer are defined in animations.css */
 
 /* =========================================
-   Extra-small phones (fine-tune)
+   Extra-small phones (fine-tune) — combined & cleaned
    ========================================= */
 @media (max-width: 480px) {
   .mobile-header .logo-frame {
     width: clamp(38.25px, calc(45px + 0.08 * (100vw - 390px)), 51.75px); /* fluid */  /* shrink logo slightly */
     height: clamp(38.25px, calc(45px + 0.08 * (100vw - 390px)), 51.75px); /* fluid */
   }
+
   .mobile-header h1 {
     font-size: clamp(15.64px, calc(18.4px + 0.10 * (100vw - 390px)), 21.16px); /* fluid */         /* scale title down */
   }
+
   .mobile-header nav a {
     font-size: clamp(11.56px, calc(13.6px + 0.10 * (100vw - 390px)), 15.64px); /* fluid */         /* smaller nav text */
   }
 
-  .mobile-header .corner-quote.corner-quote.right {
+  /* Right quote: keep micro-positioning so it stays fully in view */
+  .mobile-header .corner-quote.right {
     font-size: clamp(12.24px, calc(14.4px + 0.10 * (100vw - 390px)), 16.56px); /* fluid */
     opacity: 0.70;
-  }
-
-  /* 🔧 micro-positions so both quotes stay fully in view */
-  .mobile-header .corner-quote.right {
     top: clamp(20.4px, calc(24px + 0.12 * (100vh - 844px)), 27.6px); /* fluid */
     right: clamp(10.2px, calc(12px + 0.08 * (100vw - 390px)), 13.8px); /* fluid */
     width: clamp(119px, calc(140px + 0.15 * (100vw - 390px)), 161px); /* fluid */
   }
-}
 
-/* Duplicate extra-small block for left quote (preserve original tuning) */
-@media (max-width: 480px) {
-  .mobile-header .logo-frame {
-    width: clamp(38.25px, calc(45px + 0.08 * (100vw - 390px)), 51.75px); /* fluid */  /* shrink logo slightly */
-    height: clamp(38.25px, calc(45px + 0.08 * (100vw - 390px)), 51.75px); /* fluid */
-  }
-  .mobile-header h1 {
-    font-size: clamp(15.64px, calc(18.4px + 0.10 * (100vw - 390px)), 21.16px); /* fluid */         /* scale title down */
-  }
-  .mobile-header nav a {
-    font-size: clamp(11.56px, calc(13.6px + 0.10 * (100vw - 390px)), 15.64px); /* fluid */         /* smaller nav text */
-  }
-
-  .mobile-header .corner-quote.corner-quote.left {
+  /* Left quote: keep micro-positioning so it stays fully in view */
+  .mobile-header .corner-quote.left {
     font-size: clamp(10.88px, calc(12.8px + 0.10 * (100vw - 390px)), 14.72px); /* fluid */
     opacity: 0.70;
-  }
-
-  /* 🔧 micro-positions so both quotes stay fully in view */
-  .mobile-header .corner-quote.left  {
     top: clamp(23.8px, calc(28px + 0.12 * (100vh - 844px)), 32.2px); /* fluid */
     left: clamp(0.85px, calc(1px + 0.02 * (100vw - 390px)), 1.15px); /* fluid */
   }
