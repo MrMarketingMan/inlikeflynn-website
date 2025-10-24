@@ -1,6 +1,9 @@
 /* =======================================================
-   SERVICE GALLERY — Auto-Update (Production-Safe for Vite + Netlify)
-   — Refactored for accessibility & event safety —
+   SERVICE GALLERY — Auto-Update (Vite + Netlify safe)
+   - Accessibility: keydown (Space/Enter)
+   - Robust imports via import.meta.glob + .default
+   - Slug → folder mapping for nested directories
+   - Graceful fallback when empty: "Pictures coming soon"
 ========================================================= */
 
 const svcOverlay = document.getElementById("svcGalleryOverlay");
@@ -18,26 +21,47 @@ if (!svcOverlay) {
   const svcPrev = document.getElementById("svcPrev");
   const svcNext = document.getElementById("svcNext");
 
-  /* ---------- Auto-import all service images ---------- */
+  /* ---------- Auto-import all service images (recursive) ---------- */
+  // Note: Using ** to capture nested folders like door-window/window-install
   const allImages = import.meta.glob(
-    "/src/assets/img/services/*/*.{jpg,jpeg,png,webp}",
+    "/src/assets/img/services/**/*.{jpg,jpeg,png,webp}",
     { eager: true }
   );
 
-  const serviceGalleries = {};
-  for (const path in allImages) {
-    const match = path.match(/services[\\/](.+?)[\\/]/);
+  // Index images by their folder relative to services/ (e.g. "drywall", "door-window/window-install")
+  const imagesByFolder = {};
+  for (const absPath in allImages) {
+    // Normalize and extract folder relative to services/
+    // Example: /src/assets/img/services/drywall/p1.webp -> folder = "drywall"
+    // Example: /src/assets/img/services/door-window/window-install/p1.webp -> folder = "door-window/window-install"
+    const match = absPath.match(/services[\\/](.+)[\\/][^\\/]+\.(?:jpg|jpeg|png|webp)$/i);
     if (!match) continue;
-    const service = match[1];
-    if (!serviceGalleries[service]) serviceGalleries[service] = [];
-
-    const imgUrl = allImages[path].default || allImages[path];
-    serviceGalleries[service].push({ src: imgUrl, caption: "" });
+    const folderKey = match[1];
+    const mod = allImages[absPath];
+    const url = (mod && mod.default) || mod; // Vite adds .default
+    if (!imagesByFolder[folderKey]) imagesByFolder[folderKey] = [];
+    imagesByFolder[folderKey].push({ src: url, caption: "" });
   }
 
-  // Sort for predictable order
-  for (const key in serviceGalleries) {
-    serviceGalleries[key].sort((a, b) => a.src.localeCompare(b.src));
+  // Ensure deterministic order per folder
+  for (const key in imagesByFolder) {
+    imagesByFolder[key].sort((a, b) => a.src.localeCompare(b.src));
+  }
+
+  // Map dataset slugs → one or more folder paths (relative to services/)
+  // If multiple candidates are provided, existing folders will be used in order.
+  const slugToFolders = {
+    // Examples with nested mappings
+    "door-window": ["door-window/window-install", "door/window-install"],
+    "plumbing-electric": ["plumbing-electric/electric", "plumbing/electric"],
+    "trim-flooring": ["trim/flooring"],
+  };
+
+  function resolveFoldersForSlug(slug) {
+    const candidates = slugToFolders[slug] || [slug];
+    // Return only folders that actually have images, but if none exist, keep first for empty fallback
+    const existing = candidates.filter((f) => Array.isArray(imagesByFolder[f]) && imagesByFolder[f].length > 0);
+    return existing.length > 0 ? existing : [candidates[0]];
   }
 
   /* ---------- Modal / Lightbox logic ---------- */
@@ -52,7 +76,10 @@ if (!svcOverlay) {
     svcTitle.textContent = `${formattedName} Gallery`;
     svcGrid.innerHTML = "";
 
-    const images = serviceGalleries[serviceKey];
+    // Aggregate images from resolved folder(s)
+    const folders = resolveFoldersForSlug(serviceKey);
+    const images = folders.flatMap((f) => imagesByFolder[f] || []);
+
     if (!images || images.length === 0) {
       svcGrid.innerHTML = `<p class="svc-coming-soon">Pictures coming soon</p>`;
     } else {
@@ -62,6 +89,7 @@ if (!svcOverlay) {
         const image = document.createElement("img");
         image.src = img.src;
         image.alt = `${formattedName} image ${i + 1}`;
+        image.setAttribute("loading", "lazy");
         image.dataset.index = i;
         image.addEventListener("click", () => openLightbox(i));
         cell.appendChild(image);
@@ -71,16 +99,25 @@ if (!svcOverlay) {
 
     svcOverlay.classList.add("active");
     document.body.style.overflow = "hidden";
+
+    // Close on Escape while modal is open
+    document.addEventListener("keydown", onOverlayKeydown);
   }
 
   function closeServiceModal() {
     svcOverlay.classList.remove("active");
     document.body.style.overflow = "";
+    document.removeEventListener("keydown", onOverlayKeydown);
+  }
+
+  function onOverlayKeydown(e) {
+    if (e.key === "Escape") closeServiceModal();
   }
 
   function openLightbox(index) {
-    const gallery = serviceGalleries[currentService];
-    if (!gallery) return;
+    const folders = resolveFoldersForSlug(currentService);
+    const gallery = folders.flatMap((f) => imagesByFolder[f] || []);
+    if (!gallery || gallery.length === 0) return;
     currentIndex = index;
     const { src, caption } = gallery[index];
     svcLightboxImg.src = src;
@@ -93,8 +130,9 @@ if (!svcOverlay) {
   }
 
   function changeLightbox(direction) {
-    const gallery = serviceGalleries[currentService];
-    if (!gallery) return;
+    const folders = resolveFoldersForSlug(currentService);
+    const gallery = folders.flatMap((f) => imagesByFolder[f] || []);
+    if (!gallery || gallery.length === 0) return;
     currentIndex = (currentIndex + direction + gallery.length) % gallery.length;
     const { src, caption } = gallery[currentIndex];
     svcLightboxImg.src = src;
@@ -127,6 +165,6 @@ if (!svcOverlay) {
   });
 
   if (import.meta.env.DEV) {
-    console.log("✅ Loaded service galleries:", serviceGalleries);
+    console.log("✅ Indexed service folders:", Object.keys(imagesByFolder));
   }
 }
