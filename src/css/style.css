@@ -1248,11 +1248,19 @@ footer {
 /* Individual cell */
 .svc-cell {
   position: relative;
-  border: 2px solid color-mix(in srgb, var(--gold) 70%, #fff 30%);
+  /* Fallback for older browsers without color-mix(): use brand gold */
+  border: 2px solid var(--gold);
   border-radius: 10px;
   overflow: hidden;
   background: #fff;
   box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* Modern browsers: override with color-mix() if supported */
+@supports (color: color-mix(in srgb, black 50%, white)) {
+  .svc-cell {
+    border: 2px solid color-mix(in srgb, var(--gold) 70%, #fff 30%);
+  }
 }
 
 /* Before/After ribbons (optional labels) */
