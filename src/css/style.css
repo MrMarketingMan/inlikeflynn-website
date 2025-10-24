@@ -177,56 +177,6 @@ nav a.active {
                0 0 20px rgba(255,255,255,0.3);
 }
 
-/* ============================= */
-/* Free Estimate Banner (Fixed Position) */
-/* ============================= */
-.free-estimate-banner {
-  position: absolute;           /* anchored to viewport */
-  top: 70px;                 /* adjust vertical position */
-  left: -35px;                   /* true left edge of page */
-  z-index: 40;               /* above hero but below nav dropdowns if any */
-  max-width: 350px;          /* adjust banner size */
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
-}
-
-.free-estimate-banner img {
-  width: 100%;
-  height: auto;
-  display: block;
-  pointer-events: none;      /* avoids interfering with clicks underneath */
-  user-select: none;
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
-  animation: fadeInBanner 0.6s ease-in;
-}
-
-/* Responsive scaling */
-@media (max-width: 768px) {
-  .free-estimate-banner {
-    top: 70px;
-    max-width: 260px;
-  }
-}
-
-/* Subtle fade-in on load */
-@keyframes fadeInBanner {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* =========================================
-   Mobile Positioning — Estimate Banner
-   ========================================= */
-@media (max-width: 768px) {
-  .free-estimate-banner {
-    top: clamp(93.5px, calc(110px + 0.18 * (100vh - 844px)), 126.5px); /* fluid */ /* 🔧 move lower on phones — increase or decrease as needed */
-    left: clamp(-40.25px, calc(-35px + 0.12 * (100vw - 390px)), -29.75px); /* fluid */
-    max-width: clamp(221px, calc(260px + 0.20 * (100vw - 390px)), 299px); /* fluid */ /* optional: slightly smaller banner for narrow viewports */
-  }
-}
-
 /* =========================================
    Responsive Header Switch — Desktop vs Mobile
    ========================================= */
