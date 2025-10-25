@@ -18,5 +18,5 @@ Disallow: /.codex/
 # Disallow: /test/
 # Disallow: /drafts/
 
-# Sitemap location (update with your live domain)
-Sitemap: https://www.inlikeflynnllc.com/sitemap.xml
+# Sitemap location (updated for live domain)
+Sitemap: https://www.inlikeflynnhandyman.com/sitemap.xml

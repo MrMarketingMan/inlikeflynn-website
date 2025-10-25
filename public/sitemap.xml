@@ -4,37 +4,59 @@
   In Like Flynn LLC — Sitemap
   --------------------------------
   Helps search engines discover and index site pages.
-  Update URLs as new pages are added or structure changes.
+  Updated 2025-10-24 for live domain & latest structure.
   ================================================
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <!-- Home -->
   <url>
-    <loc>https://www.inlikeflynnllc.com/</loc>
-    <lastmod>2025-10-10</lastmod>
+    <loc>https://www.inlikeflynnhandyman.com/</loc>
+    <lastmod>2025-10-24</lastmod>
     <priority>1.0</priority>
   </url>
 
   <!-- Services Section -->
   <url>
-    <loc>https://www.inlikeflynnllc.com/#services</loc>
-    <lastmod>2025-10-10</lastmod>
+    <loc>https://www.inlikeflynnhandyman.com/#services</loc>
+    <lastmod>2025-10-24</lastmod>
     <priority>0.9</priority>
+  </url>
+
+  <!-- Gallery (Service Work Showcase) -->
+  <url>
+    <loc>https://www.inlikeflynnhandyman.com/#gallery</loc>
+    <lastmod>2025-10-24</lastmod>
+    <priority>0.8</priority>
   </url>
 
   <!-- About Section -->
   <url>
-    <loc>https://www.inlikeflynnllc.com/#about</loc>
-    <lastmod>2025-10-10</lastmod>
+    <loc>https://www.inlikeflynnhandyman.com/#about</loc>
+    <lastmod>2025-10-24</lastmod>
     <priority>0.8</priority>
   </url>
 
   <!-- Contact Section -->
   <url>
-    <loc>https://www.inlikeflynnllc.com/#contact</loc>
-    <lastmod>2025-10-10</lastmod>
+    <loc>https://www.inlikeflynnhandyman.com/#contact</loc>
+    <lastmod>2025-10-24</lastmod>
     <priority>0.9</priority>
   </url>
 
+  <!-- Seasonal Offers -->
+  <url>
+    <loc>https://www.inlikeflynnhandyman.com/#seasonal</loc>
+    <lastmod>2025-10-24</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Testimonials -->
+  <url>
+    <loc>https://www.inlikeflynnhandyman.com/#testimonials</loc>
+    <lastmod>2025-10-24</lastmod>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>
+
