@@ -1,10 +1,14 @@
 // =============================
-// Falling Leaves Animation (Synced Fade + Random Speed)
+// Falling Leaves Animation (GPU-friendly transforms only)
+// - Runs only when a leaf banner/container exists
+// - Cleans up interval on container removal or page unload
 // =============================
 
-const leafLayer = document.querySelector(".leaf-layer");
+// Support either .leaf-banner (requested) or current .gutter-banner container
+const leafContainer = document.querySelector('.leaf-banner, .gutter-banner');
+const leafLayer = leafContainer?.querySelector('.leaf-layer') || null;
 
-if (leafLayer) {
+if (leafContainer && leafLayer) {
   // Emoji options for leaf styles
   const leaves = ["🍁", "🍂", "🍃"];
 
@@ -64,12 +68,16 @@ if (leafLayer) {
   // Spawns a new leaf every 1.4s for a steady flow
   const leafInterval = setInterval(() => {
     // Stop interval if layer removed from DOM
-    if (!document.body.contains(leafLayer)) {
+    if (!document.body.contains(leafLayer) || !document.body.contains(leafContainer)) {
       clearInterval(leafInterval);
       return;
     }
     spawnLeaf();
   }, 1400);
+
+  // Clear on page unload/navigation to avoid stray timers
+  const cleanup = () => clearInterval(leafInterval);
+  window.addEventListener('pagehide', cleanup, { once: true });
 } else {
-  console.info("Leaf layer not found — skipping falling leaves animation.");
+  console.info("Leaf banner/layer not found — skipping falling leaves animation.");
 }
