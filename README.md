@@ -1,7 +1,7 @@
 🛠️ In Like Flynn LLC — Website
 
 A fast, modern business website for In Like Flynn LLC, a handyman and construction service based in Gettysburg, Pennsylvania.
-Built with Vite, vanilla HTML/CSS/JS, and optimized for local SEO, performance, and maintainability.
+Built with Vite and vanilla HTML/CSS/JavaScript (no CSS frameworks such as Tailwind). The site is optimized for local SEO, performance, and maintainability.
 This project is currently in the final optimization and polish phase before public launch.
 
 🌟 Project Overview
@@ -39,10 +39,11 @@ Version Control: Git + GitHub
 
 Dev Environment: VS Code + Ubuntu (WSL2)
 
-⚙️ Installation & Development
+⚙️ Quick start — Install, develop, build
 
-Clone and run locally with:
+Clone the repo and run locally:
 
+```bash
 # 1) Clone repository
 git clone https://github.com/<your-username>/inlikeflynn-website.git
 cd inlikeflynn-website
@@ -53,11 +54,12 @@ npm install
 # 3) Start development server
 npm run dev
 
-# 4) Build for production (outputs to dist/)
+# 4) Build for production
 npm run build
 
 # 5) Preview the production build locally
 npm run preview
+```
 
 🌐 Deployment (Netlify)
 
@@ -69,17 +71,15 @@ Build command: npm run build
 
 Publish directory: dist
 
-Environment: Node 18+ recommended.
+Environment: Node 16+ (Node 18+ recommended).
 
-Optional: Create a netlify.toml to handle caching or redirects.
+Optional: Create a `netlify.toml` to handle caching or redirects (a sample `netlify.toml` is included in this repo).
 
 Confirm the following post-deploy:
 
-Canonical domain is correct in index.html
-
-robots.txt and sitemap.xml reference the correct domain
-
-All tel: links work correctly on mobile devices
+- Canonical domain is correct in `index.html`
+- `robots.txt` and `sitemap.xml` reference the correct domain
+- All `tel:` links work correctly on mobile devices
 
 🧠 Optimization & SEO Notes
 
@@ -171,7 +171,10 @@ Preparing for public Netlify launch
 📄 License / Credits
 
 All website content, text, and media © In Like Flynn LLC.
-Source code is licensed for internal project use only.
-For reuse, contact the project owner.
 
-Built with ❤️ by In Like Flynn LLC — Premium Handyman & Construction Services serving South-Central Pennsylvania.
+Source code: MIT-style permissions for reuse are permitted with prior approval from the project owner. Contact the repo maintainer for formal permission before redistributing assets or code.
+
+Third-party resources:
+- Google Fonts (Montserrat, Oswald, Great Vibes)
+
+Built with ❤️ by In Like Flynn LLC — Premium Handyman & Construction Services serving Gettysburg, PA and nearby towns (Hanover, Littlestown, Fairfield, and surrounding areas).
