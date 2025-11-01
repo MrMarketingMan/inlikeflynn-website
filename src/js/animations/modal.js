@@ -1,9 +1,13 @@
 // ─────────────── GUTTER MODAL SCRIPT ───────────────
 // Controls manual open, close, and one-time auto-popup
+
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('gutterModal');
   const openBtn = document.getElementById('openGutterModal');
   const closeBtn = document.getElementById('closeModal');
+  const focusableElements =
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+  let firstFocusableElement, lastFocusableElement, previouslyFocusedElement;
 
   if (!modal) return;
 
@@ -11,13 +15,49 @@ document.addEventListener('DOMContentLoaded', () => {
   let overlayClickHandler = null;
   let keydownHandler = null;
 
+  const trapFocus = (e) => {
+    const isTabPressed = e.key === 'Tab';
+    if (!isTabPressed) return;
+
+    if (e.shiftKey) {
+      if (document.activeElement === firstFocusableElement) {
+        e.preventDefault();
+        lastFocusableElement.focus();
+      }
+    } else {
+      if (document.activeElement === lastFocusableElement) {
+        e.preventDefault();
+        firstFocusableElement.focus();
+      }
+    }
+  };
+
   const openModal = () => {
+    previouslyFocusedElement = document.activeElement;
+
+    // ✅ Ensure ARIA semantics for assistive technologies
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'gutterModalTitle');
+
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
+    document.body.setAttribute('aria-hidden', 'true');
+
+    const focusableContent = modal.querySelectorAll(focusableElements);
+    firstFocusableElement = focusableContent[0];
+    lastFocusableElement = focusableContent[focusableContent.length - 1];
+
+    if (firstFocusableElement) firstFocusableElement.focus();
 
     // Attach temporary listeners and clean them on close
-    overlayClickHandler = (e) => { if (e.target === modal) closeModal(); };
-    keydownHandler = (e) => { if (e.key === 'Escape') closeModal(); };
+    overlayClickHandler = (e) => {
+      if (e.target === modal) closeModal();
+    };
+    keydownHandler = (e) => {
+      if (e.key === 'Escape') closeModal();
+      trapFocus(e);
+    };
     modal.addEventListener('click', overlayClickHandler);
     document.addEventListener('keydown', keydownHandler);
   };
@@ -25,6 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeModal = () => {
     modal.classList.remove('active');
     modal.setAttribute('aria-hidden', 'true');
+    document.body.removeAttribute('aria-hidden');
+
+    if (previouslyFocusedElement) {
+      previouslyFocusedElement.focus();
+    }
 
     // Clean up transient listeners to avoid leaks / duplicates
     if (overlayClickHandler) {
