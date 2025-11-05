@@ -2,7 +2,7 @@
 # In Like Flynn LLC — robots.txt
 # --------------------------------
 # Controls how search engines crawl and index the site.
-# Safe defaults for launch; refine after going live.
+# Safe defaults for live production.
 # ================================================
 
 User-agent: *
@@ -19,4 +19,4 @@ Disallow: /.codex/
 # Disallow: /drafts/
 
 # Sitemap location (updated for live domain)
-Sitemap: https://www.inlikeflynnhandyman.com/sitemap.xml
+Sitemap: https://www.inlikeflynnllc.com/sitemap.xml
