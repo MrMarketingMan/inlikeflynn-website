@@ -24,11 +24,7 @@
   </url>
 
   <!-- Gallery (Service Work Showcase) -->
-  <url>
-    <loc>https://www.inlikeflynnllc.com/#gallery</loc>
-    <lastmod>2025-11-05</lastmod>
-    <priority>0.8</priority>
-  </url>
+  
 
   <!-- About Section -->
   <url>
@@ -45,17 +41,9 @@
   </url>
 
   <!-- Seasonal Offers -->
-  <url>
-    <loc>https://www.inlikeflynnllc.com/#seasonal</loc>
-    <lastmod>2025-11-05</lastmod>
-    <priority>0.7</priority>
-  </url>
+  
 
   <!-- Testimonials -->
-  <url>
-    <loc>https://www.inlikeflynnllc.com/#testimonials</loc>
-    <lastmod>2025-11-05</lastmod>
-    <priority>0.6</priority>
-  </url>
+  
 
 </urlset>
