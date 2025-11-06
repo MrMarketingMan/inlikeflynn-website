@@ -217,8 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Contact option actions (use the site number)
-  if (callBtn) callBtn.onclick = () => (window.location.href = 'tel:+17177531172');
-  if (textBtn) textBtn.onclick = () => (window.location.href = 'sms:+17177531172?body=Hi,%20I%27d%20like%20a%20free%20estimate!');
+  if (callBtn) callBtn.onclick = () => (window.location.href = 'tel:+17172297088');
+  if (textBtn) textBtn.onclick = () => (window.location.href = 'sms:+17172297088?body=Hi,%20I%27d%20like%20a%20free%20estimate!');
 
   // Email form toggle
   if (emailBtn && emailForm) {
