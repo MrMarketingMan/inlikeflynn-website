@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>In Like Flynn LLC | Gettysburg Handyman & Home Repair Experts</title>
+  <!-- Netlify Forms integration active: contact-modal -->
 
   <!-- Styles -->
   <link rel="stylesheet" href="/src/css/main.css" />
@@ -351,14 +352,28 @@
         <button class="contact-btn" id="emailBtn">✉️ Email Us</button>
       </div>
 
-      <form class="email-form" id="emailForm">
+      <form
+        name="contact-modal"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        id="emailForm"
+        class="email-form"
+      >
+        <input type="hidden" name="form-name" value="contact-modal">
+        <p hidden>
+          <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+        </p>
+
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <textarea name="message" rows="3" placeholder="How can we help?" required></textarea>
         <button type="submit">Send Message</button>
-      </form>
 
-      <p class="confirmation" id="emailConfirm" hidden>✅ Thanks! We’ll reply within 24 hours.</p>
+        <p class="confirmation" id="emailConfirm" hidden>
+          ✅ Thanks! We’ll reply within 24 hours.
+        </p>
+      </form>
     </div>
   </div>
 </body>
