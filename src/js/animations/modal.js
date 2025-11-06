@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (err) {
         const subject = 'Website Inquiry';
         const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
-        window.location.href = `mailto:InLikeFlynn@inlikeflynnllc.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = `mailto:inlikeflynn@inlikeflynnllc.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         if (emailConfirm) emailConfirm.hidden = false;
       }
     });
