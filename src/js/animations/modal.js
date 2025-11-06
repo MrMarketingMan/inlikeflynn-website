@@ -245,7 +245,11 @@ document.addEventListener('DOMContentLoaded', () => {
           method: 'POST',
           body: formData
         });
-        if (!res.ok) throw new Error('Server rejected');
+        const text = await res.text();
+        // Only treat as success if server explicitly says OK
+        if (!res.ok || text.trim() !== 'OK') {
+          throw new Error('Server did not execute PHP handler');
+        }
         if (emailConfirm) emailConfirm.hidden = false;
         emailForm.reset();
       } catch (err) {
