@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>In Like Flynn LLC | Gettysburg Handyman & Home Repair Experts</title>
+  <!-- Netlify Forms integration active: contact-modal -->
 
   <!-- Styles -->
   <link rel="stylesheet" href="/src/css/main.css" />
@@ -52,32 +53,33 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&family=Great+Vibes&display=swap"></noscript>
   
   <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": ["LocalBusiness","HomeAndConstructionBusiness","Handyman"],
-    "name": "In Like Flynn LLC",
-    "image": "https://www.inlikeflynnllc.com/logo.png",
-    "url": "https://www.inlikeflynnllc.com",
-    "telephone": "+1-717-753-1172",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Gettysburg, PA",
-      "addressLocality": "Gettysburg",
-      "addressRegion": "PA",
-      "postalCode": "17325",
-      "addressCountry": "US"
-    },
-    "priceRange": "$$",
-    "serviceType": "Handyman Services, Drywall Installation and Finishing, Interior and Exterior Painting, Siding Repair, Deck and Dock Construction, Home Maintenance and Repairs",
-    "openingHours": "Mo-Fr 08:00-18:00",
-    "sameAs": [
-      "https://www.facebook.com/inlikeflynnllc",
-      "https://www.instagram.com/inlikeflynnllc"
-    ],
-    "description": "In Like Flynn LLC is a local handyman business in Gettysburg, PA offering drywall, painting, siding repair, and deck builds — built to last."
-  }
-  </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness","HomeAndConstructionBusiness","Handyman"],
+  "name": "In Like Flynn LLC",
+  "image": "https://www.inlikeflynnllc.com/logo.png",
+  "url": "https://www.inlikeflynnllc.com",
+  "telephone": "+1-717-753-1172",
+  "email": "inlikeflynn@inlikeflynnllc.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Gettysburg, PA",
+    "addressLocality": "Gettysburg",
+    "addressRegion": "PA",
+    "postalCode": "17325",
+    "addressCountry": "US"
+  },
+  "priceRange": "$$",
+  "serviceType": "Handyman Services, Drywall Installation and Finishing, Interior and Exterior Painting, Siding Repair, Deck and Dock Construction, Home Maintenance and Repairs",
+  "openingHours": "Mo-Fr 08:00-18:00",
+  "sameAs": [
+    "https://www.facebook.com/inlikeflynnllc",
+    "https://www.instagram.com/inlikeflynnllc"
+  ],
+  "description": "In Like Flynn LLC is a local handyman business in Gettysburg, PA offering drywall, painting, siding repair, and deck builds — built to last."
+}
+</script>
 </head>
 
 <body>
@@ -140,7 +142,7 @@
     <p>Professional • Reliable • Affordable</p>
 
     <button class="contact-trigger btn" type="button" aria-label="Contact In Like Flynn LLC">
-      Contact Us
+      Get A Free Estimate
     </button>
 
 
@@ -351,14 +353,28 @@
         <button class="contact-btn" id="emailBtn">✉️ Email Us</button>
       </div>
 
-      <form class="email-form" id="emailForm">
+      <form
+        name="contact-modal"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        id="emailForm"
+        class="email-form"
+      >
+        <input type="hidden" name="form-name" value="contact-modal">
+        <p hidden>
+          <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+        </p>
+
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <textarea name="message" rows="3" placeholder="How can we help?" required></textarea>
         <button type="submit">Send Message</button>
-      </form>
 
-      <p class="confirmation" id="emailConfirm" hidden>✅ Thanks! We’ll reply within 24 hours.</p>
+        <p class="confirmation" id="emailConfirm" hidden>
+          ✅ Thanks! We’ll reply within 24 hours.
+        </p>
+      </form>
     </div>
   </div>
 </body>

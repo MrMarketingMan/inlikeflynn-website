@@ -245,13 +245,17 @@ document.addEventListener('DOMContentLoaded', () => {
           method: 'POST',
           body: formData
         });
-        if (!res.ok) throw new Error('Server rejected');
+        const text = await res.text();
+        // Only treat as success if server explicitly says OK
+        if (!res.ok || text.trim() !== 'OK') {
+          throw new Error('Server did not execute PHP handler');
+        }
         if (emailConfirm) emailConfirm.hidden = false;
         emailForm.reset();
       } catch (err) {
         const subject = 'Website Inquiry';
         const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
-        window.location.href = `mailto:info@inlikeflynnllc.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = `mailto:inlikeflynn@inlikeflynnllc.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         if (emailConfirm) emailConfirm.hidden = false;
       }
     });
