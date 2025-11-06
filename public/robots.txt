@@ -9,14 +9,13 @@ User-agent: *
 Allow: /
 
 # Prevent crawlers from indexing development or config files
-Disallow: /src/
-Disallow: /node_modules/
-Disallow: /.git/
-Disallow: /.codex/
+Disallow: /src
+Disallow: /node_modules
+Disallow: /.git
+Disallow: /.codex
 
 # Optional: block temporary or test pages (uncomment if needed)
-# Disallow: /test/
-# Disallow: /drafts/
+# Disallow: /test
+# Disallow: /drafts
 
-# Sitemap location (updated for live domain)
 Sitemap: https://www.inlikeflynnllc.com/sitemap.xml
