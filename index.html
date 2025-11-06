@@ -139,11 +139,9 @@
   <img src="/src/assets/img/logo.webp" alt="In Like Flynn logo badge" class="logo-placeholder" loading="lazy" width="254" height="254" style="max-width:100%; height:auto;" sizes="(max-width:768px) 40vw, 254px">
     <p>Professional • Reliable • Affordable</p>
 
-    <a href="tel:+17177531172" class="call-link-wrapper" aria-label="Call In Like Flynn LLC for a free estimate">
-  <button type="button" aria-label="Request a free estimate">
-    Get a Free Estimate
-  </button>
-</a>
+    <button class="contact-trigger btn" type="button" aria-label="Contact In Like Flynn LLC">
+      Contact Us
+    </button>
 
 
     <!-- Gutter Banner -->
@@ -261,11 +259,11 @@
     <h2 id="cta-heading">Ready to Start Your Project?</h2>
     <p>
       Call or text us today at
-      <a
-        href="tel:717-753-1172"
-        class="cta-call"
-        aria-label="Call In Like Flynn LLC at 717-753-1172"
-      >717-753-1172</a>
+      <button
+        type="button"
+        class="cta-call contact-trigger"
+        aria-label="Contact In Like Flynn LLC"
+      >717-753-1172</button>
     </p>
     <div class="map-container" style="margin-top:1rem;">
       <div id="map-container"></div>
@@ -340,5 +338,28 @@
   <script type="module" src="/src/js/main.js" defer></script>
   <script type="module" src="/src/js/animations/service-gallery.js" defer></script>
   <script type="module" src="/src/js/lazy-map.js" defer></script>
+  
+  <!-- Contact Modal -->
+  <div class="contact-modal" id="contactModal" aria-modal="true" role="dialog" hidden>
+    <div class="contact-modal-content" role="document">
+      <h2>How would you like to reach us?</h2>
+      <p class="subtext">We’ll get back to you fast — choose what works best for you.</p>
+
+      <div class="contact-options">
+        <button class="contact-btn" id="callBtn">📞 Call Us</button>
+        <button class="contact-btn" id="textBtn">💬 Text Us</button>
+        <button class="contact-btn" id="emailBtn">✉️ Email Us</button>
+      </div>
+
+      <form class="email-form" id="emailForm">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="3" placeholder="How can we help?" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+
+      <p class="confirmation" id="emailConfirm" hidden>✅ Thanks! We’ll reply within 24 hours.</p>
+    </div>
+  </div>
 </body>
 </html>

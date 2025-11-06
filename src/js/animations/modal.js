@@ -134,3 +134,126 @@ document.addEventListener('DOMContentLoaded', () => {
   //   try { window.localStorage.setItem('flynnGutterModalTime', String(now)); } catch {}
   // }
 });
+
+// ─────────────── CONTACT MODAL SCRIPT ───────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('contactModal');
+  const triggers = document.querySelectorAll('.contact-trigger');
+  if (!modal || !triggers.length) return;
+
+  const callBtn = modal.querySelector('#callBtn');
+  const textBtn = modal.querySelector('#textBtn');
+  const emailBtn = modal.querySelector('#emailBtn');
+  const emailForm = modal.querySelector('#emailForm');
+  const emailConfirm = modal.querySelector('#emailConfirm');
+
+  const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+  let firstFocusable, lastFocusable, previouslyFocused;
+
+  let overlayClickHandler = null;
+  let keydownHandler = null;
+
+  const trapFocus = (e) => {
+    if (e.key !== 'Tab') return;
+    if (e.shiftKey) {
+      if (document.activeElement === firstFocusable) {
+        e.preventDefault();
+        lastFocusable.focus();
+      }
+    } else {
+      if (document.activeElement === lastFocusable) {
+        e.preventDefault();
+        firstFocusable.focus();
+      }
+    }
+  };
+
+  const openModal = () => {
+    previouslyFocused = document.activeElement;
+    modal.removeAttribute('hidden');
+    modal.setAttribute('aria-hidden', 'false');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+
+    const focusable = modal.querySelectorAll(focusableSelectors);
+    firstFocusable = focusable[0];
+    lastFocusable = focusable[focusable.length - 1];
+    if (firstFocusable) firstFocusable.focus();
+
+    overlayClickHandler = (e) => {
+      if (e.target === modal) closeModal();
+    };
+    keydownHandler = (e) => {
+      if (e.key === 'Escape') closeModal();
+      trapFocus(e);
+    };
+    modal.addEventListener('click', overlayClickHandler);
+    document.addEventListener('keydown', keydownHandler);
+  };
+
+  const closeModal = () => {
+    modal.setAttribute('aria-hidden', 'true');
+    modal.setAttribute('hidden', '');
+    if (previouslyFocused) previouslyFocused.focus();
+    if (overlayClickHandler) {
+      modal.removeEventListener('click', overlayClickHandler);
+      overlayClickHandler = null;
+    }
+    if (keydownHandler) {
+      document.removeEventListener('keydown', keydownHandler);
+      keydownHandler = null;
+    }
+  };
+
+  // Bind open triggers
+  triggers.forEach((el) => {
+    el.addEventListener('click', openModal);
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openModal();
+      }
+    });
+  });
+
+  // Contact option actions (use the site number)
+  if (callBtn) callBtn.onclick = () => (window.location.href = 'tel:+17177531172');
+  if (textBtn) textBtn.onclick = () => (window.location.href = 'sms:+17177531172?body=Hi,%20I%27d%20like%20a%20free%20estimate!');
+
+  // Email form toggle
+  if (emailBtn && emailForm) {
+    emailBtn.addEventListener('click', () => {
+      emailForm.classList.toggle('active');
+      if (emailForm.classList.contains('active')) {
+        const firstInput = emailForm.querySelector('input, textarea');
+        if (firstInput) firstInput.focus();
+      }
+    });
+  }
+
+  // Submit handler with PHP -> fallback mailto
+  if (emailForm) {
+    emailForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(emailForm);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const message = formData.get('message');
+
+      try {
+        const res = await fetch('/contact-handler.php', {
+          method: 'POST',
+          body: formData
+        });
+        if (!res.ok) throw new Error('Server rejected');
+        if (emailConfirm) emailConfirm.hidden = false;
+        emailForm.reset();
+      } catch (err) {
+        const subject = 'Website Inquiry';
+        const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+        window.location.href = `mailto:info@inlikeflynnllc.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        if (emailConfirm) emailConfirm.hidden = false;
+      }
+    });
+  }
+});
