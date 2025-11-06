@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $to = "info@inlikeflynnllc.com";
+  $to = "InLikeFlynn@inlikeflynnllc.com";
   $subject = "New Website Inquiry";
   $name = isset($_POST['name']) ? $_POST['name'] : '';
   $email = isset($_POST['email']) ? $_POST['email'] : '';
