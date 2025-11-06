@@ -4,5 +4,6 @@
 @import './services.css';
 @import './animations.css';
 @import './footer.css';
+@import './modal.css';
 
 /* main.css is the single entrypoint that imports partials above */
