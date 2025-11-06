@@ -8,7 +8,8 @@
     "build": "rimraf dist && vite build",
     "preview": "vite preview",
     "webp": "node scripts/convert-to-webp.mjs",
-    "update-refs": "node scripts/update-references.mjs"
+    "update-refs": "node scripts/update-references.mjs",
+    "recompress": "node scripts/recompress-webp.mjs"
   },
   "devDependencies": {
     "rimraf": "^6.1.0",

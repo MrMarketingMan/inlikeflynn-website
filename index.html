@@ -44,13 +44,12 @@
   
   <!-- Social verification -->
   <link rel="me" href="https://www.facebook.com/inlikeflynnllc">
-  <!-- Google Fonts (optimized preload) -->
+  <!-- Optimized Google Fonts: preload + swap (keeps families/weights identical) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&family=Great+Vibes&display=swap"
-    rel="stylesheet"
-  >
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&family=Great+Vibes&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&family=Great+Vibes&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&family=Great+Vibes&display=swap"></noscript>
   
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -88,7 +87,7 @@
 <header class="desktop-header">
   <div class="logo">
     <div class="logo-frame">
-      <img src="/src/assets/img/header-logo.webp" alt="In Like Flynn Logo" loading="lazy" />
+  <img src="/src/assets/img/header-logo.webp" alt="In Like Flynn Logo" width="58" height="58" style="max-width:100%; height:auto;" sizes="58px" />
     </div>
     <h1>In Like Flynn LLC</h1>
   </div>
@@ -110,7 +109,7 @@
 
   <div class="header-top">
     <div class="logo-frame">
-      <img src="/src/assets/img/header-logo.webp" alt="In Like Flynn Logo" />
+  <img src="/src/assets/img/header-logo.webp" alt="In Like Flynn Logo" width="58" height="58" style="max-width:100%; height:auto;" sizes="58px" />
     </div>
     <!-- Removed duplicate <h1> -->
   </div>
@@ -125,7 +124,7 @@
 
   <!-- Free Estimate Banner -->
   <div class="free-estimate-banner">
-    <img src="/src/assets/img/estimate-banner.webp" alt="Free Estimates - Call or Text 717-753-1172" />
+  <img src="/src/assets/img/estimate-banner.webp" alt="Free Estimates - Call or Text 717-753-1172" width="331" height="220" style="max-width:100%; height:auto;" loading="lazy" sizes="(max-width:768px) 80vw, 331px" />
   </div>
 
   <!-- ============================= -->
@@ -137,7 +136,7 @@
       <span>Drywall Specialists &amp; Construction Services</span>
     </h2>
 
-    <img src="/src/assets/img/logo.webp" alt="In Like Flynn logo badge" class="logo-placeholder" loading="lazy">
+  <img src="/src/assets/img/logo.webp" alt="In Like Flynn logo badge" class="logo-placeholder" loading="lazy" width="254" height="254" style="max-width:100%; height:auto;" sizes="(max-width:768px) 40vw, 254px">
     <p>Professional • Reliable • Affordable</p>
 
     <a href="tel:+17177531172" class="call-link-wrapper" aria-label="Call In Like Flynn LLC for a free estimate">
@@ -204,7 +203,7 @@
   <!-- ============================= -->
   <section class="about fade-section" id="about">
     <div class="about-image">
-      <img src="/src/assets/img/ryan-working.webp" alt="Ryan Flynn working on site">
+  <img src="/src/assets/img/ryan-working.webp" alt="Ryan Flynn working on site" width="435" height="755" style="max-width:100%; height:auto;" loading="lazy" sizes="(max-width:768px) 80vw, 435px">
       <p class="image-caption">Lake Heritage — a dock build and a lucky catch.</p>
     </div>
 
