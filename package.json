@@ -6,10 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "rimraf dist && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "webp": "node scripts/convert-to-webp.mjs",
+    "update-refs": "node scripts/update-references.mjs"
   },
   "devDependencies": {
     "rimraf": "^6.1.0",
-    "vite": "^7.1.11"
+    "vite": "^7.1.11",
+    "sharp": "^0.33.4"
   }
 }
