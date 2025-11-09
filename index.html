@@ -8,6 +8,11 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="/src/css/main.css" />
+  
+  <!-- Preload critical CSS -->
+  <link rel="preload" href="/src/css/base.css" as="style">
+  <link rel="preload" href="/src/css/header.css" as="style">
+  <link rel="preload" href="/src/css/hero.css" as="style">
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -44,10 +49,15 @@
   <link rel="canonical" href="https://www.inlikeflynnllc.com" />
   
   <!-- Social verification -->
-  <link rel="me" href="https://www.facebook.com/inlikeflynnllc">
+  <link rel="me" href="https://www.facebook.com/inlikeflynnllc" rel="noopener">
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  
   <!-- Optimized Google Fonts: preload + swap (keeps families/weights identical) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://connect.facebook.net">
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&family=Great+Vibes&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&family=Great+Vibes&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&family=Great+Vibes&display=swap"></noscript>
@@ -108,7 +118,7 @@
 <header class="desktop-header">
   <div class="logo">
     <div class="logo-frame">
-  <img src="/src/assets/img/header-logo.webp" alt="In Like Flynn Logo" width="58" height="58" style="max-width:100%; height:auto;" sizes="58px" />
+  <img src="/src/assets/img/header-logo.webp" alt="In Like Flynn Logo" width="58" height="58" style="max-width:100%; height:auto;" sizes="58px" loading="eager" />
     </div>
     <h1>In Like Flynn LLC</h1>
   </div>
@@ -130,7 +140,7 @@
 
   <div class="header-top">
     <div class="logo-frame">
-  <img src="/src/assets/img/header-logo.webp" alt="In Like Flynn Logo" width="58" height="58" style="max-width:100%; height:auto;" sizes="58px" />
+  <img src="/src/assets/img/header-logo.webp" alt="In Like Flynn Logo" width="58" height="58" style="max-width:100%; height:auto;" sizes="58px" loading="eager" />
     </div>
     <!-- Removed duplicate <h1> -->
   </div>
@@ -157,7 +167,7 @@
       <span>Drywall Specialists &amp; Construction Services</span>
     </h2>
 
-  <img src="/src/assets/img/logo.webp" alt="In Like Flynn logo badge" class="logo-placeholder" loading="lazy" width="254" height="254" style="max-width:100%; height:auto;" sizes="(max-width:768px) 40vw, 254px">
+  <img src="/src/assets/img/logo.webp" alt="In Like Flynn logo badge" class="logo-placeholder" fetchpriority="high" width="254" height="254" style="max-width:100%; height:auto;" sizes="(max-width:768px) 40vw, 254px">
     <p>Professional • Reliable • Affordable</p>
 
     <button class="contact-trigger btn" type="button" aria-label="Contact In Like Flynn LLC">
@@ -345,7 +355,7 @@
   <!-- Lightbox for expanded image -->
   <div class="svc-lightbox" id="svcLightbox" aria-hidden="true">
     <button class="svc-lightbox-close" id="svcLightboxClose" aria-label="Close image">&times;</button>
-    <img id="svcLightboxImg" alt="Expanded project image" />
+    <img id="svcLightboxImg" alt="Expanded project image" width="1200" height="900" style="width:auto;height:auto;" />
     <div class="svc-lightbox-caption" id="svcLightboxCaption"></div>
     <button class="svc-nav svc-prev" id="svcPrev" aria-label="Previous image">&#10094;</button>
     <button class="svc-nav svc-next" id="svcNext" aria-label="Next image">&#10095;</button>
@@ -361,10 +371,10 @@
   <script type="module" src="/src/js/lazy-map.js" defer></script>
   
   <!-- Contact Modal -->
-  <div class="contact-modal" id="contactModal" aria-modal="true" role="dialog" hidden>
+  <div class="contact-modal" id="contactModal" aria-modal="true" role="dialog" aria-labelledby="contactModalTitle" hidden>
     <div class="contact-modal-content" role="document">
-      <h2>How would you like to reach us?</h2>
-      <p class="subtext">We’ll get back to you fast — choose what works best for you.</p>
+      <h2 id="contactModalTitle">How would you like to reach us?</h2>
+      <p class="subtext">We'll get back to you fast — choose what works best for you.</p>
 
       <div class="contact-options">
         <button class="contact-btn" id="callBtn">📞 Call Us</button>

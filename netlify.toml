@@ -1,7 +1,29 @@
+# Cache static assets aggressively
 [[headers]]
-for = "/*"
+for = "/src/assets/*"
 [headers.values]
-  Cache-Control = "public, max-age=31536000"
+  Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/src/css/*"
+[headers.values]
+  Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/src/js/*"
+[headers.values]
+  Cache-Control = "public, max-age=31536000, immutable"
+
+# Don't cache HTML or manifest
+[[headers]]
+for = "/*.html"
+[headers.values]
+  Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+for = "/"
+[headers.values]
+  Cache-Control = "public, max-age=0, must-revalidate"
 
 [[redirects]]
 from = "/index.html"

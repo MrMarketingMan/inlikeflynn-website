@@ -163,8 +163,4 @@ if (!svcOverlay) {
       }
     });
   });
-
-  if (import.meta.env.DEV) {
-    console.log("✅ Indexed service folders:", Object.keys(imagesByFolder));
-  }
 }

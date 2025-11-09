@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
-    document.body.setAttribute('aria-hidden', 'true');
 
     const focusableContent = modal.querySelectorAll(focusableElements);
     firstFocusableElement = focusableContent[0];
@@ -65,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeModal = () => {
     modal.classList.remove('active');
     modal.setAttribute('aria-hidden', 'true');
-    document.body.removeAttribute('aria-hidden');
 
     if (previouslyFocusedElement) {
       previouslyFocusedElement.focus();
