@@ -32,3 +32,6 @@ pnpm-debug.log*
 *.tmp
 *.swp
 dist/
+
+# Local mockups / experiments (never deploy)
+src/mockups/
